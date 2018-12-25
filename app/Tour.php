@@ -118,4 +118,9 @@ class Tour extends Model
     {
         return $this->belongsTo(LocationTo::class, 'to_id');
     }
+
+    public function category()
+    {
+        return $this->belongsTo(TourCategory::class, 'category_id');
+    }
 }

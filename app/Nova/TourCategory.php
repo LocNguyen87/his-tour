@@ -3,29 +3,32 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Image;
-use Laravel\Nova\Fields\Number;
+use R64\NovaFields\Text;
+use R64\NovaFields\Image;
+use R64\NovaFields\Number;
 use Laravel\Nova\Fields\Markdown;
-use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\HasMany;
+use R64\NovaFields\Row;
+
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Tour extends Resource
+class TourCategory extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\Tour';
+    public static $model = 'App\TourCategory';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
@@ -33,7 +36,7 @@ class Tour extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'title'
     ];
 
     /**
@@ -46,13 +49,19 @@ class Tour extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Tên tour')->sortable(),
-            BelongsTo::make('TourCategory', 'category', 'App\Nova\TourCategory'),
-            Image::make('Hình đại diện'),
-            Number::make('Giá tour'),
-            Number::make('Giá khuyến mãi'),
-            Markdown::make('Điểm nổi bật'),
-            Markdown::make('Chi tiết tour'),
+            Text::make('Tên nhóm tour', 'title')->sortable()->rules('required', 'string'),
+            Markdown::make('Nội dung mô tả', 'summary'),
+            Image::make('Hình đại diện', 'image')->rules('required', 'image'),
+            Row::make('Thông số', [
+              Text::make('Name')
+                ->fieldClasses('w-full px-8 py-6')
+                ->hideLabelInForms(),
+              Text::make('Value')
+                ->fieldClasses('w-full px-8 py-6')
+                ->hideLabelInForms(),
+            ], 'params')->fieldClasses('w-4/5 px-8 py-6')
+              ->labelClasses('w-1/5 px-8 py-6'),
+            // HasMany::make('Tours')
         ];
     }
 
