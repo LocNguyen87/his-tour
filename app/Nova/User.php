@@ -106,4 +106,10 @@ class User extends Resource
     {
         return [];
     }
+    /**
+     * Indicates if the resource should be displayed in the sidebar.
+     *
+     * @var bool
+     */
+    public static $displayInNavigation = false;
 }

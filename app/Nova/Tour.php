@@ -3,6 +3,10 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Markdown;
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -41,6 +45,12 @@ class Tour extends Resource
     {
         return [
             ID::make()->sortable(),
+            Text::make('Tên tour')->sortable(),
+            Image::make('Hình đại diện'),
+            Number::make('Giá tour'),
+            Number::make('Giá khuyến mãi'),
+            Markdown::make('Điểm nổi bật'),
+            Markdown::make('Chi tiết tour'),
         ];
     }
 
