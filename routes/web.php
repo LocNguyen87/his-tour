@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('{slug}/{param?}', '\Remipou\NovaPageManager\PageController@page')
+	->where('slug', '^((?!' . trim(config('nova.path'), '/') . '|nova-).)*$');

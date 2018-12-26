@@ -9,11 +9,13 @@
     "license": "MIT",
     "require": {
         "php": "^7.1.3",
-        "64robots/nova-fields": "^0.6.1",
+        "benjaminhirsch/nova-slug-field": "^1.1",
+        "chris-ware/nova-clock-card": "^1.2",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
         "laravel/nova": "*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "remipou/nova-page-manager": "^1.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -65,18 +67,6 @@
         {
             "type": "path",
             "url": "./nova"
-        },
-        {
-            "type": "path",
-            "url": "./nova-components/Params"
-        },
-        {
-            "type": "path",
-            "url": "./nova-components/Params"
-        },
-        {
-            "type": "path",
-            "url": "./nova-components/Params"
         }
     ]
 }

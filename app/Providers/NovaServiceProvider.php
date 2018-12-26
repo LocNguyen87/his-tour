@@ -7,7 +7,7 @@ use Laravel\Nova\Cards\Help;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use App\Nova\User;
-
+use Remipou\NovaPageManager\PageResource;
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
     /**
@@ -57,7 +57,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            new Help,
+            (new \ChrisWare\NovaClockCard\NovaClockCard)
+            ->locale('vi')
+            ->dateFormat('dddd, Do MMMM YYYY')
+            ->timeFormat('LTS')
+            ->timezone('UTC+7')
+            ->display('text'),
+            // new Help,
         ];
     }
 
@@ -84,5 +90,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function resources()
     {
         Nova::resourcesIn(app_path('Nova'));
+        Nova::resources([
+            PageResource::class,
+        ]);
     }
 }

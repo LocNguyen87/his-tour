@@ -46,13 +46,12 @@ class Tour extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Tên tour')->sortable(),
-            BelongsTo::make('TourCategory', 'category', 'App\Nova\TourCategory'),
-            Image::make('Hình đại diện'),
-            Number::make('Giá tour'),
-            Number::make('Giá khuyến mãi'),
-            Markdown::make('Điểm nổi bật'),
-            Markdown::make('Chi tiết tour'),
+            Text::make('Tour Name')->sortable(),
+            BelongsTo::make('Tour Category', 'category', 'App\Nova\TourCategory'),
+            Image::make('Feature Image','image'),
+            Number::make('Tour price'),
+            Markdown::make('Specifications','specifications'),
+            Markdown::make('Details','detail'),
         ];
     }
 
