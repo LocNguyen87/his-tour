@@ -14,5 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/chi-tiet-tour/{tour}', 'FrontController@tourDetails')->name('tourDetails');
+
 Route::get('{slug}/{param?}', '\Remipou\NovaPageManager\PageController@page')
 	->where('slug', '^((?!' . trim(config('nova.path'), '/') . '|nova-).)*$');

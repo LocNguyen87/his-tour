@@ -61,13 +61,13 @@ class TourCategory extends Resource
     {
         return [
             ID::make()->sortable(),
-            TextWithSlug::make('Tên nhóm tour', 'title')
+            TextWithSlug::make('Tour Name', 'title')
                 ->sortable()
                 ->rules('required', 'string')
                 ->slug('Title Alias'),
             Slug::make('Title Alias','title_alias')->rules('required','string'),
-            Markdown::make('Nội dung mô tả', 'summary'),
-            Image::make('Hình đại diện', 'image')
+            Markdown::make('Summary', 'summary'),
+            Image::make('Featured Image', 'image')
         ];
     }
 

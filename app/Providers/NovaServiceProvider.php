@@ -63,7 +63,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             ->timeFormat('LTS')
             ->timezone('UTC+7')
             ->display('text'),
-            // new Help,
         ];
     }
 

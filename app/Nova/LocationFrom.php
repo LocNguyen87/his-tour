@@ -3,6 +3,10 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
+use R64\NovaFields\Text;
+use R64\NovaFields\Image;
+use R64\NovaFields\Number;
+use Laravel\Nova\Fields\Markdown;
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -51,6 +55,9 @@ class LocationFrom extends Resource
     {
         return [
             ID::make()->sortable(),
+            Text::make('Code', 'code'),
+            Text::make('Title', 'title'),
+            Markdown::make('Summary', 'summary'),
         ];
     }
 

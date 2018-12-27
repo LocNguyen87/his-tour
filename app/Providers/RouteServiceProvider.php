@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use App\Tour;
+use App\TourCategory;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -24,8 +26,9 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-
         parent::boot();
+        Route::model('tour', Tour::class);
+        Route::model('category', TourCategory::class);
     }
 
     /**

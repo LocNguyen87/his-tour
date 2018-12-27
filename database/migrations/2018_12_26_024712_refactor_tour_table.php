@@ -16,12 +16,13 @@ class RefactorTourTable extends Migration
         Schema::table('tours', function (Blueprint $table) {
             // $table->dropColumn('votes');
             $table->longText('params')->nullable()->default(null)->change();
-        }
+        });
+
         Schema::table('categories', function (Blueprint $table) {
             // $table->dropColumn('votes');
             $table->longText('params')->nullable()->default(null)->change();
             $table->text('summary')->nullable()->default(null)->change();
-        }
+        });
     }
 
     /**
