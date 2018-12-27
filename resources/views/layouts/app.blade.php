@@ -19,7 +19,7 @@
 </head>
 
 <body>
- <!-- Navbar -->
+  <!-- Navbar -->
   <nav class="navbar navbar-ct-azure navbar-transparent" role="navigation">
       <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -73,18 +73,29 @@
           </div>
       </div>
       <div class="section">
-              <div class="container tim-container" style="max-width:800px; padding-top:100px">
-                 <h1 class="text-center">Awesome looking header <br> just for my friends<small class="subtitle">This is like a small motto before the story.</small></h1>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                     <!--     end extras -->
-              </div>
-              <div class="space"></div>
+
       </div>
-  </div> <!-- wrapper -->
-  </body>
+  </div>
+  <!-- wrapper -->
+  
+  @include('partials.kilala-features')
 
 
+  <footer class="footer footer-big">
+            <div class="container">
+                <div class="copyright">
+                  <div class="col-md-4">
+                    <a href="http://www.online.gov.vn/CustomWebsiteDisplay.aspx?DocId=7941"><img src="https://songhantourist.com/upload/bocongthuong.png"></a>
+                  </div>
+                  <div class="col-md-8">
+                        <p class="copyright text-center">
+                          Bản quyền thuộc về Công ty TNHH TM Du Lịch và Dịch vụ Sông Hàn<br />
+Giấy phép kinh doanh số 0400423715 do Sở Kế Hoạch và Đầu Tư TP. Đà Nẵng cấp ngày 27/05/2002
+                        </p>
+                  </div>
+                </div>
+            </div>
+    </footer>
 </body>
 
   <!--  jQuery and Bootstrap core files    -->
