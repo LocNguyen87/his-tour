@@ -25,7 +25,7 @@
             <div class="min-h-screen flex-none pt-header min-h-screen w-sidebar bg-grad-sidebar px-6">
                 <a href="{{ Nova::path() }}">
                     <div class="absolute pin-t pin-l pin-r bg-logo flex items-center w-sidebar h-header px-6 text-white">
-                       @include('nova::partials.logo')
+                       <h3>Kilala Tour Japan</h3>
                     </div>
                 </a>
 

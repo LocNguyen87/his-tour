@@ -3,15 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Tour extends Model
+class Tour extends Model implements HasMedia
 {
+    use HasMediaTrait;
     protected $fillable = [
         'title',
         'title_alias',
         'image',
         'price',
-        'sale_price',
+        'sale_price', // will be removed
         'specifications',
         'detail',
         'schedule',
@@ -20,7 +24,7 @@ class Tour extends Model
         'public',
         'ordering',
         'featured',
-        'is_home',
+        'is_home', // will be removed
         'hits',
         'params',
         'times',
@@ -33,15 +37,6 @@ class Tour extends Model
         'created_at',
         'updated_at'
     ];
-    public function getTileAliasAttribute($value)
-    {
-        return $value;
-    }
-
-    public function setTileAliasAttribute($value)
-    {
-        $this->attributes['title_alias'] = str_slug($value);
-    }
 
     public function getBeginDateAttribute($value)
     {
@@ -54,7 +49,7 @@ class Tour extends Model
     public function setBeginDateAttribute($value)
     {
         if (!empty($value)) {
-            $this->attributes['begin_date'] = \Carbon\Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+            $this->attributes['begin_date'] = \Carbon\Carbon::createFromFormat('Y-m-d', $value)->format('Y-m-d');
         } else {
             $this->attributes['begin_date'] = NULL;
         }
@@ -91,17 +86,17 @@ class Tour extends Model
             $this->attributes['price'] = '0.0000';
     }
 
-    public function getSalePriceAttribute($value)
+    public function registerMediaConversions(Media $media = null)
     {
-        return $value;
+        $this->addMediaConversion('thumb')
+            ->width(130)
+            ->height(130);
     }
 
-    public function setSalePriceAttribute($value)
+    public function registerMediaCollections()
     {
-        if ($value != null)
-            $this->attributes['sale_price'] = str_replace('.', '', $value);
-        else
-            $this->attributes['sale_price'] = '0.0000';
+        $this->addMediaCollection('feature')->singleFile();
+        $this->addMediaCollection('gallery');
     }
 
     public function images()

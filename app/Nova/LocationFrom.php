@@ -3,27 +3,17 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
-use R64\NovaFields\Text;
-use R64\NovaFields\Image;
-use R64\NovaFields\Number;
-use Laravel\Nova\Fields\Markdown;
-use Laravel\Nova\Fields\Select;
-use Laravel\Nova\Fields\HasMany;
-use R64\NovaFields\Row;
-use Benjaminhirsch\NovaSlugField\Slug;
-use Benjaminhirsch\NovaSlugField\TextWithSlug;
-
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class TourCategory extends Resource
+class LocationFrom extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\TourCategory';
+    public static $model = 'App\LocationFrom';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -39,7 +29,7 @@ class TourCategory extends Resource
      */
     public static function label()
     {
-        return 'Tour Categories';
+        return 'Location From';
     }
 
     /**
@@ -48,7 +38,7 @@ class TourCategory extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'title'
+        'id',
     ];
 
     /**
@@ -61,13 +51,6 @@ class TourCategory extends Resource
     {
         return [
             ID::make()->sortable(),
-            TextWithSlug::make('Tên nhóm tour', 'title')
-                ->sortable()
-                ->rules('required', 'string')
-                ->slug('Title Alias'),
-            Slug::make('Title Alias','title_alias')->rules('required','string'),
-            Markdown::make('Nội dung mô tả', 'summary'),
-            Image::make('Hình đại diện', 'image')
         ];
     }
 
