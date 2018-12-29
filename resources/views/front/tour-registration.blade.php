@@ -17,16 +17,16 @@
       {{ csrf_field() }}
       <input type="hidden" id="details_url" name="details_url" />
       <div class="form-group">
-        <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Họ tên người liên hệ" value="{{ \Session::get('full_name') }}">
+        <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Họ tên người liên hệ" value="{{ \Session::get('full_name') }}" required>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Điện thoại liên hệ" value="{{ \Session::get('phone_number') }}">
+        <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Điện thoại liên hệ" value="{{ \Session::get('phone_number') }}" required>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="address" name="address" placeholder="Địa chỉ liên hệ" value="{{ \Session::get('address') }}">
+        <input type="text" class="form-control" id="address" name="address" placeholder="Địa chỉ liên hệ" value="{{ \Session::get('address') }}" required>
       </div>
       <div class="form-group">
-        <input type="email" class="form-control" id="email" name="email" placeholder="Email liên hệ" value="{{ \Session::get('email') }}">
+        <input type="email" class="form-control" id="email" name="email" placeholder="Email liên hệ" value="{{ \Session::get('email') }}" required>
       </div>
       <button id="doNext" type="submit" class="btn btn-warning btn-fill btn-block">Tiếp theo <i class="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
     </form>

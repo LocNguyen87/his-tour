@@ -40,7 +40,7 @@ Bạn vui lòng kiểm tra lại các thông tin đăng ký bên dưới, liên 
               </ul>
               <h5 class="summary-total">Tổng giá tour: <b>{{ number_format($registration->total_price, 0, ',', '.') }}</b></h5>
             </div>
-            <div class="col-md-6 col-md-offset-1">
+            <div class="col-md-7">
               <div class="row">
                 <div class="col-md-6">
                   <h5>Giá tour người lớn</h5>

@@ -6420,15 +6420,23 @@ body > .navbar-collapse.collapse {
   font-size:10pt;
   color:#fff;
 }
-h1.tour-title {
+h1.tour-title,
+.tours-title {
   font-family: 'UTM Avo Regular', Arial, sans-serif;
   font-size: 20pt;
   color: #f34d00;
   margin-bottom: 20pt;
   position: relative;
   height: 40px;
+	text-align: center
 }
-h1.tour-title::after {
+h1.tour-title b,
+.tours-title b,
+.card-tour .description b {
+	font-family: 'UTM Avo Bold', Arial, sans-serif;
+}
+h1.tour-title::after,
+.tours-title::after {
   display: block;
   content: '';
   width: 40%;
@@ -6450,6 +6458,7 @@ h1.tour-title::after {
 }
 .carousel-caption h3 {
   color:#003aa0;
+	margin:0px 0px 10px
 }
 .carousel-caption p {
   color:#464646;
@@ -6635,7 +6644,55 @@ h1.tour-title::after {
 	color:#003aa0;
 }
 .thank-you-background .summary-card-content.content {
-	
+
+}
+.tour-card-title {
+	margin-bottom:10pt;
+}
+.card-user.card-tour .author {
+	text-align: center;
+	text-transform: none;
+	margin-top: -150px;
+}
+.card-user.card-tour .avatar {
+    width: 250px;
+    height: 250px;
+    border: 5px solid #FFFFFF;
+    position: relative;
+    margin-bottom: 15px;
+}
+.tour-card-title h4.title,
+.card-user.card-tour.normal-tour h4.title {
+	color:#003aa0;
+	font-size:13pt;
+	text-align:left;
+}
+.tour-meta span {
+	font-size:13pt;
+	color:#f34d00;
+}
+.tours-grid {
+	margin-top:70pt;
+}
+.card-user.card-tour .content {
+	background:#d4efff;
+}
+.card-user.card-tour.normal-tour .content {
+    min-height: 190px;
+}
+.card-user.card-tour.normal-tour .image {
+    height: 280px;
+}
+.card-user.card-tour.normal-tour .tour-meta {
+	background:#f34d00;
+	padding:5pt;
+}
+.card-user.card-tour.normal-tour .tour-meta span {
+	color:#fff;
+}
+#hcm-tours .tours-grid,
+#hn-tours .tours-grid {
+    margin-top: 10pt;
 }
 @media screen and (min-width: 768px) {
   .navbar-right {

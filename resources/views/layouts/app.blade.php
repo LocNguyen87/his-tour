@@ -30,7 +30,7 @@
           <span class="icon-bar bar2"></span>
           <span class="icon-bar bar3"></span>
         </button>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{ asset('image/kilala-logo-white.png') }}" alt="" />
         </a>
       </div>
@@ -40,7 +40,7 @@
 
         <ul class="nav navbar-nav navbar-right">
               <li class="active">
-                  <a href="#">
+                  <a href="{{ url('/') }}">
                        Trang chủ
                   </a>
               </li>
@@ -107,5 +107,5 @@
   <!-- If you have retina @2x images on your server which can be sent to iPhone/iPad/MacRetina, please uncomment the next line, otherwise you can delete it -->
 	<!-- <script src="assets/js/retina.min.js"></script> -->
 	@yield('pageScripts')
-	
+
 </html>

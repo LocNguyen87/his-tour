@@ -22,6 +22,7 @@ use R64\NovaFields\JSON;
 use Naxon\NovaFieldSortable\Concerns\SortsIndexEntries;
 use Naxon\NovaFieldSortable\Sortable;
 use Vyuldashev\NovaMoneyField\Money;
+use Laravel\Nova\Fields\HasMany;
 
 class Tour extends Resource
 {
@@ -39,7 +40,7 @@ class Tour extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
@@ -58,7 +59,11 @@ class Tour extends Resource
      */
     public function fields(Request $request)
     {
+
         return [
+            new NovaTab('Registrations', [
+              HasMany::make('Registrations'),
+            ]),
             new NovaTab('Basic Information', [
                     NovaHeader::make('Tour Basic Information'),
                     ID::make()->sortable(),
@@ -92,6 +97,8 @@ class Tour extends Resource
                     })
                     ->hideFromIndex(),
                     Images::make('Featured Image', 'feature') // second parameter is the media collection name
+                        ->conversion('thumb')
+                        ->conversionOnView('thumb')
                         ->thumbnail('thumb') // conversion used to display the image
                         ->rules('required')
                         ->setFileName(function($originalFilename, $extension, $model){
@@ -117,9 +124,9 @@ class Tour extends Resource
                 ]),
                 new NovaTab('Details', [
                     NovaHeader::make('Tour Full Information'),
+                    Text::make('Schedule','schedule')->hideFromIndex(),
                     NovaTrumbowyg::make('Itinerary','itinerary')->hideFromIndex(),
                     NovaTrumbowyg::make('Details','detail')->hideFromIndex(),
-                    NovaTrumbowyg::make('Schedule','schedule')->hideFromIndex(),
                     NovaTrumbowyg::make('Note','note')->hideFromIndex(),
                 ]),
                 new NovaTab('Additional Parameters', [

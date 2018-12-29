@@ -3,6 +3,13 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\Textarea;
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -39,8 +46,18 @@ class Registration extends Resource
      */
     public function fields(Request $request)
     {
+        BelongsTo::make('Tour');
         return [
+
             ID::make()->sortable(),
+            Text::make('Registration Code'),
+            Text::make('Full Name'),
+            BelongsTo::make('Tour', 'tour', 'App\Nova\Tour'),
+
+            Textarea::make('Address')->hideFromIndex(),
+            Text::make('Phone Number')->hideFromIndex(),
+            Text::make('Email'),
+
         ];
     }
 

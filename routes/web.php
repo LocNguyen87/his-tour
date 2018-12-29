@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('front.home');
-});
-
+Route::get('/{from?}', 'FrontController@getHome')->name('home');
 Route::get('/chi-tiet-tour/{tour}', 'FrontController@tourDetails')->name('tourDetails');
 Route::post('/chi-tiet-tour/{tour}', 'FrontController@createRegistration')->name('createRegistration');
 Route::get('/dang-ky-tour/{tour}', 'FrontController@tourRegistration')->name('tourRegistration');

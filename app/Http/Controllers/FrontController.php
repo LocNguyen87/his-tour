@@ -9,6 +9,30 @@ use App\Registration;
 
 class FrontController extends Controller
 {
+    public function getHome(Request $request, $from = null) {
+      $featured_tour = Tour::where('featured', 1)
+      ->orderBy('ordering','asc')
+      ->take(3)
+      ->get();
+      // $selected_from = $from;
+
+      $tours_hcm = Tour::where('from_id', 1)
+      ->orderBy('ordering','asc')
+      ->take(3)
+      ->get();
+
+      $tours_hn = Tour::where('from_id', 2)
+      ->orderBy('ordering','asc')
+      ->take(3)
+      ->get();
+
+      return view('front.home', [
+        'featured_tours' => $featured_tour,
+        'tours_hcm'  =>  $tours_hcm,
+        'tours_hn'  =>  $tours_hn,
+      ]);
+    }
+
     public function tourDetails($tour) {
       $galleryItems = $tour->getMedia('gallery');
       return view('front.tour-details', ['tour' => $tour, 'galleryItems' => $galleryItems]);

@@ -10,4 +10,7 @@
 @endsection
 @section('mainContent')
   @include('partials.kilala-features')
+  @include('partials.feature-tours')
+  @include('partials.tours-from-hcm')
+  @include('partials.tours-from-hn')
 @endsection
