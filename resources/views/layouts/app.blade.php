@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/gsdk.css') }}" />
 
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Grand+Hotel|Open+Sans:400,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ asset('css/pe-icon-7-stroke.css') }}" />
 </head>
@@ -76,7 +76,7 @@
           <div class="container">
               <div class="copyright">
                 <div class="col-md-4">
-                  <a href="http://www.online.gov.vn/CustomWebsiteDisplay.aspx?DocId=7941"><img src="https://songhantourist.com/upload/bocongthuong.png"></a>
+                  <a href="https://www.online.gov.vn/CustomWebsiteDisplay.aspx?DocId=7941"><img src="https://songhantourist.com/upload/bocongthuong.png"></a>
                 </div>
                 <div class="col-md-8">
                       <p class="copyright text-center">
