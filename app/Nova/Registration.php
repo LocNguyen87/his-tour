@@ -10,6 +10,8 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\Currency;
+use Laravel\Nova\Panel;
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -48,16 +50,47 @@ class Registration extends Resource
     {
         BelongsTo::make('Tour');
         return [
-
             ID::make()->sortable(),
             Text::make('Registration Code'),
-            Text::make('Full Name'),
             BelongsTo::make('Tour', 'tour', 'App\Nova\Tour'),
 
-            Textarea::make('Address')->hideFromIndex(),
-            Text::make('Phone Number')->hideFromIndex(),
-            Text::make('Email'),
+            new Panel('Personal Information', $this->personalFields()),
+            new Panel('Price Information', $this->priceFields()),
 
+        ];
+    }
+
+    protected function personalFields() {
+        return [
+          Text::make('Full Name'),
+          Textarea::make('Address'),
+          Text::make('Phone Number'),
+          Text::make('Email'),
+        ];
+    }
+
+    protected function priceFields() {
+        return [
+          Number::make('Adults Number'),
+          Number::make('Adults Price')->resolveUsing(function ($price) {
+              return number_format($price, 0, ',', '.') . ' VNĐ';
+          }),
+          Number::make('Infants Number'),
+          Number::make('Infants Price')->resolveUsing(function ($price) {
+              return number_format($price, 0, ',', '.') . ' VNĐ';
+          }),
+          Number::make('Childs Single Number'),
+          Number::make('Childs Single Price')->resolveUsing(function ($price) {
+              return number_format($price, 0, ',', '.') . ' VNĐ';
+          }),
+          Number::make('Childs Shared Number'),
+          Number::make('Childs Shared Price')->resolveUsing(function ($price) {
+              return number_format($price, 0, ',', '.') . ' VNĐ';
+          }),
+
+          Number::make('Total Price')->resolveUsing(function ($price) {
+              return number_format($price, 0, ',', '.') . ' VNĐ';
+          }),
         ];
     }
 
