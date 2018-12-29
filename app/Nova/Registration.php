@@ -71,26 +71,26 @@ class Registration extends Resource
 
     protected function priceFields() {
         return [
-          Number::make('Adults Number'),
+          Number::make('Adults Number')->hideOnIndex(),
           Number::make('Adults Price')->resolveUsing(function ($price) {
               return number_format($price, 0, ',', '.') . ' VNĐ';
-          }),
-          Number::make('Infants Number'),
+          })->hideOnIndex(),
+          Number::make('Infants Number')->hideOnIndex(),
           Number::make('Infants Price')->resolveUsing(function ($price) {
               return number_format($price, 0, ',', '.') . ' VNĐ';
-          }),
-          Number::make('Childs Single Number'),
+          })->hideOnIndex(),
+          Number::make('Childs Single Number')->hideOnIndex(),
           Number::make('Childs Single Price')->resolveUsing(function ($price) {
               return number_format($price, 0, ',', '.') . ' VNĐ';
-          }),
-          Number::make('Childs Shared Number'),
+          })->hideOnIndex(),
+          Number::make('Childs Shared Number')->hideOnIndex(),
           Number::make('Childs Shared Price')->resolveUsing(function ($price) {
               return number_format($price, 0, ',', '.') . ' VNĐ';
-          }),
+          })->hideOnIndex(),
 
           Number::make('Total Price')->resolveUsing(function ($price) {
               return number_format($price, 0, ',', '.') . ' VNĐ';
-          }),
+          })->hideOnIndex(),
         ];
     }
 
