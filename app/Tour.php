@@ -46,7 +46,7 @@ class Tour extends Model implements HasMedia, Sortable
     ];
 
     protected $casts = [
-      'begin_date'  =>  'date:Y-m-d'
+        'begin_date'  =>  'date:Y-m-d'
     ];
 
     public $sortable = [
@@ -72,39 +72,30 @@ class Tour extends Model implements HasMedia, Sortable
         return $value;
     }
 
-    // public function getPriceAttribute($value)
-    // {
-    //     return $value;
-    // }
-    //
-    // public function setPriceAttribute($value)
-    // {
-    //     if ($value != null)
-    //         $this->attributes['price'] = str_replace('.', '', $value);
-    //     else
-    //         $this->attributes['price'] = '0.0000';
-    // }
-
     public function registerMediaConversions(Media $media = null)
     {
-        $this->addMediaConversion('thumb')
-            ->width(300)
-            ->height(300);
+      $this->addMediaConversion('banner')
+          ->width(1400)
+          ->height(450);
 
-        $this->addMediaConversion('medium-size')
-            ->width(800)
-            ->height(800);
+      $this->addMediaConversion('gallery')
+          ->width(1200)
+          ->height(500);
+
+      $this->addMediaConversion('thumb')
+          ->width(300)
+          ->height(300);
+
+      $this->addMediaConversion('medium-size')
+          ->width(800)
+          ->height(800);
     }
 
     public function registerMediaCollections()
     {
         $this->addMediaCollection('feature')->singleFile();
+        $this->addMediaCollection('banner')->singleFile();
         $this->addMediaCollection('gallery');
-    }
-
-    public function images()
-    {
-        return $this->hasMany(TourImage::class);
     }
 
     public function from()
@@ -115,5 +106,10 @@ class Tour extends Model implements HasMedia, Sortable
     public function category()
     {
         return $this->belongsTo(TourCategory::class, 'category_id');
+    }
+
+    public function registrations()
+    {
+        return $this->hasMany(Registration::class);
     }
 }

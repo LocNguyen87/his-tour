@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use App\Tour;
 use App\TourCategory;
+use App\Registration;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -29,6 +30,7 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
         Route::model('tour', Tour::class);
         Route::model('category', TourCategory::class);
+        Route::model('registration', Registration::class);
     }
 
     /**

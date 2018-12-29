@@ -18,6 +18,7 @@
         "fideloper/proxy": "^4.0",
         "gregoriohc/laravel-nova-theme-responsive": "^0.6.1",
         "intervention/imagecache": "^2.3",
+        "johnathan/nova-trumbowyg": "^1.0",
         "laravel/framework": "5.7.*",
         "laravel/nova": "*",
         "laravel/tinker": "^1.0",

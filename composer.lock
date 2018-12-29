@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1587f0e0af48463731fa6a3219abd465",
+    "content-hash": "8869ca047d0a97c15d9f32b2b73df4f8",
     "packages": [
         {
             "name": "64robots/nova-fields",
@@ -1539,6 +1539,49 @@
                 "tokenizer"
             ],
             "time": "2018-03-21T22:21:57+00:00"
+        },
+        {
+            "name": "johnathan/nova-trumbowyg",
+            "version": "1.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Johnathan/nova-trumbowyg.git",
+                "reference": "351e5c824f8ed13aae3dfeba2840957661d05bb1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Johnathan/nova-trumbowyg/zipball/351e5c824f8ed13aae3dfeba2840957661d05bb1",
+                "reference": "351e5c824f8ed13aae3dfeba2840957661d05bb1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Johnathan\\NovaTrumbowyg\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Johnathan\\NovaTrumbowyg\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova wrapper for the Trumbowyg WYSIWYG editor",
+            "keywords": [
+                "laravel",
+                "nova",
+                "trumbowyg",
+                "wysiwyg"
+            ],
+            "time": "2018-10-09T11:56:45+00:00"
         },
         {
             "name": "laravel/framework",

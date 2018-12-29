@@ -65,37 +65,28 @@
     </div><!-- /.container-fluid -->
   </nav>
 
-
-  <div class="wrapper">
-       <div class="header-banner">
-          <div class="header-image">
-              <img src="{{ asset('image/parallax-text.jpg') }}" alt="" />
-          </div>
-      </div>
-      <div class="section">
-
-      </div>
+  <div class="mainContent">
+    @yield('topBanner')
+    <div class="container">
+      @yield('mainContent')
+    </div>
   </div>
-  <!-- wrapper -->
-  
-  @include('partials.kilala-features')
-
 
   <footer class="footer footer-big">
-            <div class="container">
-                <div class="copyright">
-                  <div class="col-md-4">
-                    <a href="http://www.online.gov.vn/CustomWebsiteDisplay.aspx?DocId=7941"><img src="https://songhantourist.com/upload/bocongthuong.png"></a>
-                  </div>
-                  <div class="col-md-8">
-                        <p class="copyright text-center">
-                          Bản quyền thuộc về Công ty TNHH TM Du Lịch và Dịch vụ Sông Hàn<br />
-Giấy phép kinh doanh số 0400423715 do Sở Kế Hoạch và Đầu Tư TP. Đà Nẵng cấp ngày 27/05/2002
-                        </p>
-                  </div>
+          <div class="container">
+              <div class="copyright">
+                <div class="col-md-4">
+                  <a href="http://www.online.gov.vn/CustomWebsiteDisplay.aspx?DocId=7941"><img src="https://songhantourist.com/upload/bocongthuong.png"></a>
                 </div>
-            </div>
-    </footer>
+                <div class="col-md-8">
+                      <p class="copyright text-center">
+                        Bản quyền thuộc về Công ty TNHH TM Du Lịch và Dịch vụ Sông Hàn<br />
+                        Giấy phép kinh doanh số 0400423715 do Sở Kế Hoạch và Đầu Tư TP. Đà Nẵng cấp ngày 27/05/2002
+                      </p>
+                </div>
+              </div>
+          </div>
+  </footer>
 </body>
 
   <!--  jQuery and Bootstrap core files    -->
@@ -113,9 +104,8 @@ Giấy phép kinh doanh số 0400423715 do Sở Kế Hoạch và Đầu Tư TP. 
   <script src="{{ asset('js/jquery.tagsinput.js') }}"></script>
   <script src="{{ asset('js/chartist.min.js') }}"></script>
   <script src="{{ asset('js/get-shit-done.js') }}"></script>
-
-    <!-- If you have retina @2x images on your server which can be sent to iPhone/iPad/MacRetina, please uncomment the next line, otherwise you can delete it -->
+  <!-- If you have retina @2x images on your server which can be sent to iPhone/iPad/MacRetina, please uncomment the next line, otherwise you can delete it -->
 	<!-- <script src="assets/js/retina.min.js"></script> -->
-
-
+	@yield('pageScripts')
+	
 </html>
