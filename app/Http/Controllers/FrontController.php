@@ -9,7 +9,7 @@ use App\Registration;
 
 class FrontController extends Controller
 {
-    public function getHome(Request $request, $from = null) {
+    public function getHome(Request $request) {
       $featured_tour = Tour::where('featured', 1)
       ->orderBy('ordering','asc')
       ->take(3)
