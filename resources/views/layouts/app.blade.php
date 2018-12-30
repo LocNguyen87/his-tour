@@ -11,6 +11,8 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+		<link rel="stylesheet" href="{{ asset('css/lightGallery.css') }}" />
+		<link rel="stylesheet" href="{{ asset('css/lg-transitions.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/gsdk.css') }}" />
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -70,6 +72,7 @@
     <div class="container">
       @yield('mainContent')
     </div>
+		@yield('extraContent')
   </div>
 
   <footer class="footer footer-big">
@@ -93,6 +96,12 @@
   <script src="{{ asset('js/jquery.js') }}"></script>
   <script src="{{ asset('js/jquery-ui.custom.min.js') }}"></script>
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+	<script src="{{ asset('js/lightgallery-all.min.js') }}"></script>
+
+  <!-- lightgallery plugins -->
+  <script src="{{ asset('js/lg-thumbnail.min.js') }}"></script>
+  <script src="{{ asset('js/lg-fullscreen.min.js') }}"></script>
 
 	<!--  Plugins -->
   <script src="{{ asset('js/gsdk-checkbox.js') }}"></script>

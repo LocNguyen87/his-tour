@@ -89,6 +89,7 @@ h6, .h6 {
 p {
   font-size: 16px;
   line-height: 1.5;
+	margin-bottom:15px;
 }
 
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small, h1 .small, h2 .small, h3 .small, h4 .small, h5 .small, h6 .small, .h1 .small, .h2 .small, .h3 .small, .h4 .small, .h5 .small, .h6 .small {
@@ -6436,7 +6437,10 @@ h1.tour-title b,
 	font-family: 'UTM Avo Bold', Arial, sans-serif;
 }
 h1.tour-title::after,
-.tours-title::after {
+.tours-title::after,
+h3.explore-title::after,
+h3.cuisine-title::after,
+h3.contact-title::after {
   display: block;
   content: '';
   width: 40%;
@@ -6445,6 +6449,18 @@ h1.tour-title::after,
   position: absolute;
   margin-left: 30%;
   bottom: 0;
+}
+h3.explore-title::after,
+h3.cuisine-title::after,
+h3.contact-title::after {
+	left:0;
+	margin-left:auto;
+	width:60%;
+	height:2px;
+}
+h3.cuisine-title::after,
+h3.contact-title::after {
+	width:30%;
 }
 .carousel-caption {
   position: relative;
@@ -6693,6 +6709,73 @@ h1.tour-title::after,
 #hcm-tours .tours-grid,
 #hn-tours .tours-grid {
     margin-top: 10pt;
+}
+.japan-explore img,
+.japan-cuisine img {
+    max-width: 100%;
+    height: auto;
+}
+.explore-nature {
+	margin:30pt 0;
+}
+h3.explore-title,
+h3.cuisine-title,
+h3.contact-title {
+	color: #f34d00;
+	line-height: 1.5em;
+	position:relative;
+	padding-bottom: 10pt;
+}
+h3.explore-title span,
+h3.cuisine-title span,
+h3.contact-title span {
+	font-family: 'UTM Avo Bold', Arial, sans-serif;
+}
+#explore-thumbnails {
+	margin-top:30pt;
+}
+#explore-thumbnails a {
+	display: block;
+	float:left;
+	width:30%;
+	margin-right:1%;
+	margin-bottom:1%;
+}
+#explore-thumbnails img {
+	width:100%;
+	height:auto;
+}
+.japan-cuisine {
+  position: relative;
+}
+.cuisine-content {
+	position: absolute;
+	top:10pt;
+	width:100%;
+	height:100%;
+}
+.cuisine-text {
+    width: 73%;
+}
+.cuisine-text p {
+	color:#fff;
+}
+h5.branch-title {
+	font-family: 'UTM Avo Bold', Arial, sans-serif;
+	font-size:11pt;
+}
+.home-contact {
+	margin-bottom: 30pt;
+}
+.home-contact ul {
+    padding-left: 20px;
+}
+.office-wrap {
+    padding: 10px;
+    border: 1px solid #666;
+}
+.office-row {
+	margin-top:10pt;
 }
 @media screen and (min-width: 768px) {
   .navbar-right {
