@@ -6777,6 +6777,31 @@ h5.branch-title {
 .office-row {
 	margin-top:10pt;
 }
+.sale-info img {
+    width: 70px;
+    height: 70px;
+}
+.sale-info {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    z-index: 10;
+}
+h3.sale-text {
+	color: #003aa0;
+}
+h3.sale-text strong {
+	color:#f00;
+}
+#all-tours {
+	margin:20pt auto;
+}
+#all-tours .tours-grid {
+	margin-top:0;
+}
+.form-group .error {
+    color: #f00;
+}
 @media screen and (min-width: 768px) {
   .navbar-right {
       float: right!important;

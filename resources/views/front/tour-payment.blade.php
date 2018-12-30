@@ -4,7 +4,7 @@
 @section('topBanner')
 <div class="header-banner">
     <div class="header-image">
-        <img src="{{ asset('image/parallax-text.jpg') }}" alt="" />
+        <img src="{{ asset('image/tour-registration-banner.jpg') }}" alt="" />
     </div>
 </div>
 @endsection
@@ -17,7 +17,7 @@
       {{ csrf_field() }}
       <div class="form-group">
         <label class="radio">
-          <span class="icons"><span class="first-icon fa fa-circle-o"></span><span class="first-icon fa fa-dot-circle-o"></span></span><input type="radio" name="paymentOption" data-toggle="radio" id="paymentOption" value="complete" checked>
+          <span class="icons"><span class="first-icon fa fa-circle-o"></span><span class="second-icon fa fa-dot-circle-o"></span></span><input type="radio" name="paymentOption" data-toggle="radio" id="paymentOption" value="complete" required>
           <i></i>Thanh toán trọn gói
         </label>
       </div>
@@ -48,19 +48,19 @@
         Nếu hủy tour khách thanh toán các khoản lệ phí hủy tour, hủy vé máy bay theo điều khoản bên dưới:
         <ul>
           <li>
-            - Ngay sau khi đặt cọc tour và trước ngày khởi hành là 22 ngày: Phí hủy là 2.000.000 VNĐ
+            Ngay sau khi đặt cọc tour và trước ngày khởi hành là 22 ngày: Phí hủy là 2.000.000 VNĐ
           </li>
           <li>
-            - Trước ngày đi 15 -21 ngày:            Thanh toán 50% trên giá tour.
+            Trước ngày đi 15 -21 ngày:            Thanh toán 50% trên giá tour.
           </li>
           <li>
-            - Trước ngày đi 8-14 ngày:               Thanh toán 70% trên giá tour.
+            Trước ngày đi 8-14 ngày:               Thanh toán 70% trên giá tour.
           </li>
           <li>
-            - Trước ngày đi 07 ngày:                  Thanh toán 100% trên giá tour.
+            Trước ngày đi 07 ngày:                  Thanh toán 100% trên giá tour.
           </li>
           <li>
-            - Trường hợp Quý khách bị từ chối visa, chi phí không hoàn lại là 3,000,000 VNĐ
+            Trường hợp Quý khách bị từ chối visa, chi phí không hoàn lại là 3,000,000 VNĐ
           </li>
           <li>
             (Thời gian hủy tour được tính cho ngày làm việc, không tính thứ bảy và chủ nhật)
@@ -153,36 +153,60 @@
 @section('pageScripts')
 <script type="text/javascript">
   jQuery(document).ready(function($) {
-
-    $('#doComplete').on('click', function(e) {
-      e.preventDefault()
-      var registrationForm = document.getElementById("payment-form")
-  		var fd = new FormData(registrationForm)
-
-      $.ajax({
-        url: window.location,
-        data: fd,
-        cache: false,
-        processData: false,
-        contentType: false,
-        type: 'POST',
-        beforeSend: function() {
-          console.log('before send');
-        },
-        success: function (xml, textStatus, xhr) {
-        	if(xhr.responseJSON.result === 'registration_created') { // registration created successfully
-            window.location = xhr.responseJSON.redirect
-        	}
-        	else {
-        		alert('Có lỗi khi đăng ký')
-        	}
-        },
-				error: function(error) {
-						alert('Có lỗi khi đăng ký')
+    $("#payment-form").validate({
+      rules: {
+        paymentOption: {
+          required: true
         }
-      });
+      },
+      messages: {
+      	paymentOption: {
+      		required: "Vui lòng chọn phương thức thanh toán"
+      	}
+      },
+      errorPlacement: function(error, element) {
+  	    if ( element.is(":radio") )
+  	    {
+  	        error.appendTo( element.parents('.row') );
+  	    }
+  	    else
+  	    { // This is the default behavior
+  	        error.insertAfter( element );
+  	    }
+  	 },
 
-    })
+      submitHandler: function(form, event) {
+  		    event.preventDefault();
+  		    var myform = document.getElementById("payment-form");
+  		    var fd = new FormData(myform );
+
+            $.ajax({
+              url: window.location,
+              data: fd,
+              cache: false,
+              processData: false,
+              contentType: false,
+              type: 'POST',
+              beforeSend: function() {
+                console.log('before send');
+              },
+              success: function (xml, textStatus, xhr) {
+              	if(xhr.responseJSON.result === 'registration_created') { // registration created successfully
+              		// display thank you text
+                  console.log('success')
+                  // console.log(xhr.responseJSON.redirect)
+                  window.location = xhr.responseJSON.redirect
+              	}
+              	else {
+              		alert('Vui lòng chọn phương thức thanh toán')
+              	}
+              },
+      				error: function(error) {
+      						alert('Có lỗi khi đăng ký')
+              }
+            });
+      }
+    });
   })
 </script>
 @endsection

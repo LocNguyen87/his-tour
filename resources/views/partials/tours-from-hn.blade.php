@@ -31,10 +31,10 @@
                       </li>
                   </ul>
                   <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-xs-6">
                           <a class="btn btn-warning btn-fill btn-block" href="{!! route('tourDetails', ['tour' => $featured_tour]) !!}">Đăng ký tour</a>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-xs-6">
                           <a class="btn btn-primary btn-fill btn-block" href="{!! route('tourDetails', ['tour' => $featured_tour]) !!}">Chi tiết</a>
                       </div>
                   </div>

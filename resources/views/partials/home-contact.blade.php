@@ -1,4 +1,4 @@
-<div class="home-contact">
+<div id="contact" class="home-contact">
   <div class="container">
     <h3 class="contact-title">
       Liên hệ <b>với chúng tôi</b>

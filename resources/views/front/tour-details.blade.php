@@ -15,15 +15,19 @@
                     <div class="content">
                       <form id="registration-init-form">
                           {{ csrf_field() }}
+                          <input type="hidden" name="tour_id" value="{{ $tour->id }}" readonly/>
                           <div class="form-group">
-                            <input type="hidden" name="tour_id" value="{{ $tour->id }}" readonly/>
                             <input type="text" class="form-control" id="tour_name" placeholder="Tên tour" value="{{ $tour->title }}" readonly>
                           </div>
                           <div class="form-group">
-                            <input type="text" class="form-control" id="begin_date" placeholder="Ngày khởi hành" value="{{ $tour->begin_date->format('d/m/Y') }}" readonly>
-                          </div>
-                          <div class="form-group">
-                            <input type="text" class="form-control" id="location_from" placeholder="Điểm khởi hành" value="{{ $tour->from->title }}" readonly>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <input type="text" class="form-control" id="begin_date" placeholder="Ngày khởi hành" value="Ngày khởi hành: {{ $tour->begin_date->format('d/m/Y') }}" readonly>
+                              </div>
+                              <div class="col-md-6">
+                                <input type="text" class="form-control" id="location_from" placeholder="Điểm khởi hành" value="Từ: {{ $tour->from->title }}" readonly>
+                              </div>
+                            </div>
                           </div>
                           <div class="form-group">
                             <div class="row">
@@ -152,6 +156,9 @@
 </div>
 <div class="tour-content">
   <h1 class="tour-title text-center">{{ $tour->title }}</h1>
+  @if($tour->sale_text)
+  <h3 class="sale-text text-center">{!! $tour->sale_text !!}</h3>
+  @endif
   <div class="tour-carousel">
     <div id="carousel">
         <div id="tour-gallery-carousel" class="carousel slide" data-ride="carousel">
@@ -204,7 +211,12 @@
 
     <!-- Tab panes -->
     <div class="tab-content tour-tab-content">
-      <div role="tabpanel" class="tab-pane fade in active" id="itinerary">{!! $tour->itinerary !!}</div>
+      <div role="tabpanel" class="tab-pane fade in active" id="itinerary">
+        @if($tour->itinerary_file)
+        <a href="{!! url('/storage/' . $tour->itinerary_file) !!}" class="downloadItinerary btn btn-block btn-fill btn-lg btn-info">Download lịch trình  <i class="fa fa-download" aria-hidden="true"></i></a>
+        @endif
+        {!! $tour->itinerary !!}
+      </div>
       <div role="tabpanel" class="tab-pane" id="details">{!! $tour->detail !!}</div>
       <div role="tabpanel" class="tab-pane" id="note">{!! $tour->note !!}</div>
     </div>

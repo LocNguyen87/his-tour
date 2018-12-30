@@ -52,10 +52,10 @@ class Registration extends Resource
         BelongsTo::make('Tour');
         return [
             ID::make()->sortable(),
-            Text::make('Registration Code'),
-            Text::make('Referer')->hideFromIndex(),
-            BelongsTo::make('Tour', 'tour', 'App\Nova\Tour'),
-            Text::make('Payment Method'),
+            Text::make('Registration Code')->canSeeWhen('viewRegistrationData', $this),
+            Text::make('Referer')->hideFromIndex()->canSeeWhen('viewRegistrationData', $this),
+            BelongsTo::make('Tour', 'tour', 'App\Nova\Tour')->canSeeWhen('viewRegistrationData', $this),
+            Text::make('Payment Method')->canSeeWhen('viewRegistrationData', $this),
             new Panel('Personal Information', $this->personalFields()),
             new Panel('Price Information', $this->priceFields()),
 
@@ -64,35 +64,35 @@ class Registration extends Resource
 
     protected function personalFields() {
         return [
-          Text::make('Full Name')->hideFromIndex(),
-          Textarea::make('Address')->hideFromIndex(),
-          Text::make('Phone Number')->hideFromIndex(),
-          Text::make('Email')->hideFromIndex(),
+          Text::make('Full Name')->hideFromIndex()->canSeeWhen('viewPersonalData', $this),
+          Textarea::make('Address')->hideFromIndex()->canSeeWhen('viewPersonalData', $this),
+          Text::make('Phone Number')->hideFromIndex()->canSeeWhen('viewPersonalData', $this),
+          Text::make('Email')->hideFromIndex()->canSeeWhen('viewPersonalData', $this),
         ];
     }
 
     protected function priceFields() {
         return [
-          Number::make('Adults Number')->hideFromIndex(),
-          Number::make('Adults Price')->resolveUsing(function ($price) {
+          Number::make('Adults Number')->hideFromIndex()->canSeeWhen('viewRegistrationData', $this),
+          Text::make('Adults Price')->resolveUsing(function ($price) {
               return number_format($price, 0, ',', '.') . ' VNĐ';
-          })->hideFromIndex(),
-          Number::make('Infants Number')->hideFromIndex(),
-          Number::make('Infants Price')->resolveUsing(function ($price) {
+          })->hideFromIndex()->canSeeWhen('viewRegistrationData', $this),
+          Text::make('Infants Number')->hideFromIndex()->canSeeWhen('viewRegistrationData', $this),
+          Text::make('Infants Price')->resolveUsing(function ($price) {
               return number_format($price, 0, ',', '.') . ' VNĐ';
-          })->hideFromIndex(),
-          Number::make('Childs Single Number')->hideFromIndex(),
-          Number::make('Childs Single Price')->resolveUsing(function ($price) {
+          })->hideFromIndex()->canSeeWhen('viewRegistrationData', $this),
+          Text::make('Childs Single Number')->hideFromIndex()->canSeeWhen('viewRegistrationData', $this),
+          Text::make('Childs Single Price')->resolveUsing(function ($price) {
               return number_format($price, 0, ',', '.') . ' VNĐ';
-          })->hideFromIndex(),
-          Number::make('Childs Shared Number')->hideFromIndex(),
-          Number::make('Childs Shared Price')->resolveUsing(function ($price) {
+          })->hideFromIndex()->canSeeWhen('viewRegistrationData', $this),
+          Text::make('Childs Shared Number')->hideFromIndex()->canSeeWhen('viewRegistrationData', $this),
+          Text::make('Childs Shared Price')->resolveUsing(function ($price) {
               return number_format($price, 0, ',', '.') . ' VNĐ';
-          })->hideFromIndex(),
+          })->hideFromIndex()->canSeeWhen('viewRegistrationData', $this),
 
-          Number::make('Total Price')->resolveUsing(function ($price) {
+          Text::make('Total Price')->resolveUsing(function ($price) {
               return number_format($price, 0, ',', '.') . ' VNĐ';
-          }),
+          })->canSeeWhen('viewRegistrationData', $this),
         ];
     }
 

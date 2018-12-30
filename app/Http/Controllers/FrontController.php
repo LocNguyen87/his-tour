@@ -34,6 +34,17 @@ class FrontController extends Controller
       ]);
     }
 
+    public function getAllTours(Request $request) {
+
+      $tours = Tour::orderBy('ordering','asc')
+      ->take(30)
+      ->get();
+
+      return view('front.tours', [
+        'tours' => $tours
+      ]);
+    }
+
     public function tourDetails($tour) {
       $galleryItems = $tour->getMedia('gallery');
       return view('front.tour-details', ['tour' => $tour, 'galleryItems' => $galleryItems]);
@@ -213,7 +224,11 @@ class FrontController extends Controller
       ]);
     }
 
-    public function thankYouPage(Registration $registration) {
+    public function thankYouPage(Request $request, Registration $registration) {
+      // check valid url
+      if (! $request->hasValidSignature()) {
+        abort(401);
+      }
       return view('front.tour-thankyou', ['registration' => $registration ]);
     }
 }

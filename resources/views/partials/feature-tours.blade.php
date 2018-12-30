@@ -10,6 +10,11 @@
             <div class="image image-plain"></div>
             <div class="content">
                 <div class="author tour-card-title">
+                @if($featured_tour->on_sale === 1)
+                <div class="sale-info">
+                  <img class="tippy" title="{!! $featured_tour->sale_text !!}" src="{{ asset('image/sale-badge.png') }}" data-theme="light" data-arrow="true" />
+                </div>
+                @endif
                     <a href="{!! route('tourDetails', ['tour' => $featured_tour]) !!}">
                     <img class="avatar" src="{!! $featured_item->getFullUrl() !!}" alt="..." />
 
@@ -33,10 +38,10 @@
                       </li>
                   </ul>
                   <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-xs-6">
                           <a class="btn btn-warning btn-fill btn-block" href="{!! route('tourDetails', ['tour' => $featured_tour]) !!}">Đăng ký tour</a>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-xs-6">
                           <a class="btn btn-primary btn-fill btn-block" href="{!! route('tourDetails', ['tour' => $featured_tour]) !!}">Chi tiết</a>
                       </div>
                   </div>

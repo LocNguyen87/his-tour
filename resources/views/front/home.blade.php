@@ -27,6 +27,7 @@
         animateThumb: false,
         showThumbByDefault: false
     });
+    new Tippy('.tippy')
   })
 </script>
 @endsection

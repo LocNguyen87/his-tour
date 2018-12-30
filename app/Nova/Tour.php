@@ -10,19 +10,21 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Textarea;
-use Johnathan\NovaTrumbowyg\NovaTrumbowyg;
-use Illuminate\Http\Request;
-use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Fields\File;
+use Laravel\Nova\Fields\HasMany;
 use Benjaminhirsch\NovaSlugField\Slug;
 use Benjaminhirsch\NovaSlugField\TextWithSlug;
 use Arsenaltech\NovaTab\NovaTab;
 use Arsenaltech\NovaHeader\NovaHeader;
-use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use R64\NovaFields\JSON;
 use Naxon\NovaFieldSortable\Concerns\SortsIndexEntries;
 use Naxon\NovaFieldSortable\Sortable;
 use Vyuldashev\NovaMoneyField\Money;
-use Laravel\Nova\Fields\HasMany;
+use Johnathan\NovaTrumbowyg\NovaTrumbowyg;
+use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
+
+use Illuminate\Http\Request;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Tour extends Resource
 {
@@ -85,9 +87,10 @@ class Tour extends Resource
                     Boolean::make('Visible', 'public'),
                     Boolean::make('Featured', 'featured'),
                     Date::make('Departure Date','begin_date')->format('DD-MM-Y'),
-
-                ]),
-                new NovaTab('Image & Gallery', [
+                    Boolean::make('On Sale'),
+                    NovaTrumbowyg::make('Sale Text')->hideFromIndex(),
+              ]),
+              new NovaTab('Image & Gallery', [
                     NovaHeader::make('Tour Featured Image & Gallery')->hideFromIndex(),
                     Images::make('Banner Image', 'banner') // second parameter is the media collection name
                         ->thumbnail('banner') // conversion used to display the image
@@ -121,9 +124,13 @@ class Tour extends Resource
                         Textarea::make('Image Description'),
                     ])
                     ->hideFromIndex(),
-                ]),
-                new NovaTab('Details', [
+              ]),
+              new NovaTab('Details', [
                     NovaHeader::make('Tour Full Information'),
+                    File::make('Itinerary File')
+                      ->disk('public')
+                      ->path('itinerary-files')
+                      ->hideFromIndex(),
                     Text::make('Schedule','schedule')->hideFromIndex(),
                     NovaTrumbowyg::make('Itinerary','itinerary')->hideFromIndex(),
                     NovaTrumbowyg::make('Details','detail')->hideFromIndex(),

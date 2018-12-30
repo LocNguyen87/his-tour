@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
 		<link rel="stylesheet" href="{{ asset('css/lightGallery.css') }}" />
 		<link rel="stylesheet" href="{{ asset('css/lg-transitions.min.css') }}" />
+		<link rel="stylesheet" href="{{ asset('css/tippy.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/gsdk.css') }}" />
-
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Grand+Hotel|Open+Sans:400,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ asset('css/pe-icon-7-stroke.css') }}" />
@@ -41,23 +41,18 @@
       <div class="collapse navbar-collapse">
 
         <ul class="nav navbar-nav navbar-right">
-              <li class="active">
+              <li class="{{ Route::is('home') ? 'active' : '' }}">
                   <a href="{{ url('/') }}">
                        Trang chủ
                   </a>
               </li>
-              <li>
-                  <a href="#">
-                       Giới thiệu
-                  </a>
-              </li>
-              <li>
-                  <a href="#">
+              <li class="{{ Route::is('tours') || Route::is('tourDetails') || Route::is('tourRegistration') || Route::is('tourPaymentUpdateForm') || Route::is('thankYouPage') ? 'active' : '' }}">
+                  <a href="{{ url('/tour-du-lich') }}">
                        Tour du lịch
                   </a>
               </li>
               <li>
-                  <a href="#">
+                  <a href="{{ url('/#contact') }}">
                        Liên hệ
                   </a>
               </li>
@@ -96,7 +91,10 @@
   <script src="{{ asset('js/jquery.js') }}"></script>
   <script src="{{ asset('js/jquery-ui.custom.min.js') }}"></script>
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-
+	<script src="{{ asset('js/tippy.js') }}"></script>
+	<script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+	<script src="{{ asset('js/additional-methods.min.js') }}"></script>
+	<script src="{{ asset('js/messages_vi.min.js') }}"></script>
 	<script src="{{ asset('js/lightgallery-all.min.js') }}"></script>
 
   <!-- lightgallery plugins -->

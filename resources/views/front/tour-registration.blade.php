@@ -4,7 +4,7 @@
 @section('topBanner')
 <div class="header-banner">
     <div class="header-image">
-        <img src="{{ asset('image/parallax-text.jpg') }}" alt="" />
+        <img src="{{ asset('image/tour-registration-banner.jpg') }}" alt="" />
     </div>
 </div>
 @endsection
@@ -116,38 +116,78 @@
 <script type="text/javascript">
   jQuery(document).ready(function($) {
     $('#details_url').val(window.location)
-    $('#doNext').on('click', function(e) {
-      e.preventDefault()
-      var registrationForm = document.getElementById("details-form")
-  		var fd = new FormData(registrationForm)
-
-      $.ajax({
-        url: window.location,
-        data: fd,
-        cache: false,
-        processData: false,
-        contentType: false,
-        type: 'POST',
-        beforeSend: function() {
-          console.log('before send');
+    $("#details-form").validate({
+      rules: {
+        full_name: {
+          required: true
         },
-        success: function (xml, textStatus, xhr) {
-        	if(xhr.responseJSON.result === 'details_set') { // registration created successfully
-        		// display thank you text
-            console.log('success')
-            // console.log(xhr.responseJSON.redirect)
-            window.location = xhr.responseJSON.redirect
-        	}
-        	else {
-        		alert('Có lỗi khi đăng ký')
-        	}
+        phone_number: {
+          required: true
         },
-				error: function(error) {
-						alert('Có lỗi khi đăng ký')
-        }
-      });
+        email: {
+          required: true
+        },
+        address: {
+          required: true
+        },
+      },
+      messages: {
+      	full_name: {
+      		required: "Vui lòng nhập họ tên"
+      	},
+      	phone_number: {
+      		required: "Vui lòng nhập điện thoại liên hệ"
+      	},
+      	email: {
+      		required: "Vui lòng nhập email"
+      	},
+      	address: {
+      		required: "Vui lòng nhập địa chỉ"
+      	}
+      },
+      errorPlacement: function(error, element) {
+  	    if ( element.is(":radio") )
+  	    {
+  	        error.appendTo( element.parents('.row') );
+  	    }
+  	    else
+  	    { // This is the default behavior
+  	        error.insertAfter( element );
+  	    }
+  	 },
 
-    })
+      submitHandler: function(form, event) {
+  		    event.preventDefault();
+  		    var myform = document.getElementById("details-form");
+  		    var fd = new FormData(myform );
+
+            $.ajax({
+              url: window.location,
+              data: fd,
+              cache: false,
+              processData: false,
+              contentType: false,
+              type: 'POST',
+              beforeSend: function() {
+                console.log('before send');
+              },
+              success: function (xml, textStatus, xhr) {
+              	if(xhr.responseJSON.result === 'details_set') { // registration created successfully
+              		// display thank you text
+                  console.log('success')
+                  // console.log(xhr.responseJSON.redirect)
+                  window.location = xhr.responseJSON.redirect
+              	}
+              	else {
+              		alert('Có lỗi khi đăng ký')
+              	}
+              },
+      				error: function(error) {
+      						alert('Có lỗi khi đăng ký')
+              }
+            });
+      }
+    });
   })
 </script>
 @endsection

@@ -366,5 +366,10 @@
     "Constant": "Constant",
     "Decrease": "Decrease",
     "Reset Password Notification": "Reset Password Notification",
-    "Nova User": "Nova User"
+    "Nova User": "Nova User",
+    "viewRegistrationData": "View Registrations Data",
+    "manageRegistration": "Manage Registrations",
+    "viewPersonalData": "View Personal Data",
+    "viewTour": "View Tour",
+    "manageTour": "Manage Tour"
 }

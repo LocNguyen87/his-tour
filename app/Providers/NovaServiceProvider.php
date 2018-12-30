@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use App\Nova\User;
 use Remipou\NovaPageManager\PageResource;
+use Silvanite\NovaToolPermissions\NovaToolPermissions;
+
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
     /**
@@ -74,6 +76,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [
+          new NovaToolPermissions(),
         ];
     }
 
@@ -91,7 +94,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         Nova::resourcesIn(app_path('Nova'));
         Nova::resources([
-            PageResource::class,
+            PageResource::class
         ]);
     }
 }

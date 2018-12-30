@@ -4,7 +4,7 @@
 @section('topBanner')
 <div class="header-banner">
     <div class="header-image">
-        <img src="{{ asset('image/parallax-text.jpg') }}" alt="" />
+        <img src="{{ asset('image/tour-registration-banner.jpg') }}" alt="" />
     </div>
 </div>
 @endsection
