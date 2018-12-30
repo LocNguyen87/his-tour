@@ -22,9 +22,11 @@
         "laravel/framework": "5.7.*",
         "laravel/nova": "*",
         "laravel/tinker": "^1.0",
+        "maatwebsite/laravel-nova-excel": "^1.1",
         "manogi/nova-tiptap": "^0.2.2",
         "naxon/nova-field-sortable": "^1.0",
         "remipou/nova-page-manager": "^1.0",
+        "spatie/laravel-referer": "^1.3",
         "vyuldashev/nova-money-field": "^1.3"
     },
     "require-dev": {

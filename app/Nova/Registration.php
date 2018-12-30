@@ -14,6 +14,7 @@ use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Panel;
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
 class Registration extends Resource
 {
@@ -52,8 +53,8 @@ class Registration extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Registration Code'),
-            BelongsTo::make('Tour', 'tour', 'App\Nova\Tour'),
-
+            BelongsTo::make('Tour', 'tour', 'App\Nova\Tour')->hideFromIndex(),
+            Text::make('Payment Method')->hideFromIndex(),
             new Panel('Personal Information', $this->personalFields()),
             new Panel('Price Information', $this->priceFields()),
 
@@ -135,6 +136,34 @@ class Registration extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+          (new DownloadExcel)
+            ->allFields()
+            ->withHeadings(
+              '#',
+              'Registration Code',
+              'Full Name',
+              'Phone Number',
+              'Email',
+              'Address',
+              'Tour ID',
+              'Status',
+              'Created At',
+              'Updated At',
+              'Adults',
+              'Adults Price',
+              'Infants',
+              'Infants Price',
+              'Childs - Shared',
+              'Childs - Shared Price',
+              'Childs - Single',
+              'Childs - Single Price',
+              'Total Price',
+              'Payment Method',
+              'Referer'
+            )
+            ->withFilename('registrations-' . time() . '.xlsx')
+            ,
+        ];
     }
 }

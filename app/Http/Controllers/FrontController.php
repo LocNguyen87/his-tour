@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Tour;
 use App\Registration;
+use Facades\Spatie\Referer\Referer;
 
 class FrontController extends Controller
 {
@@ -194,7 +195,7 @@ class FrontController extends Controller
       $registration->payment_method = $payment_method;
 
       $registration->status = 'New';
-
+      $registration->referer = Referer::get();
       $registration->save();
 
       // we dont need session data anymore
