@@ -140,29 +140,7 @@ class Registration extends Resource
         return [
           (new DownloadExcel)
             ->allFields()
-            ->withHeadings(
-              '#',
-              'Registration Code',
-              'Full Name',
-              'Phone Number',
-              'Email',
-              'Address',
-              'Tour ID',
-              'Status',
-              'Created At',
-              'Updated At',
-              'Adults',
-              'Adults Price',
-              'Infants',
-              'Infants Price',
-              'Childs - Shared',
-              'Childs - Shared Price',
-              'Childs - Single',
-              'Childs - Single Price',
-              'Total Price',
-              'Payment Method',
-              'Referer'
-            )
+            ->withHeadings()
             ->withFilename('registrations-' . time() . '.xlsx')
             ,
         ];
