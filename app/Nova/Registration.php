@@ -53,8 +53,9 @@ class Registration extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Registration Code'),
-            BelongsTo::make('Tour', 'tour', 'App\Nova\Tour')->hideFromIndex(),
-            Text::make('Payment Method')->hideFromIndex(),
+            Text::make('Referer')->hideFromIndex(),
+            BelongsTo::make('Tour', 'tour', 'App\Nova\Tour'),
+            Text::make('Payment Method'),
             new Panel('Personal Information', $this->personalFields()),
             new Panel('Price Information', $this->priceFields()),
 
@@ -63,10 +64,10 @@ class Registration extends Resource
 
     protected function personalFields() {
         return [
-          Text::make('Full Name'),
-          Textarea::make('Address'),
-          Text::make('Phone Number'),
-          Text::make('Email'),
+          Text::make('Full Name')->hideFromIndex(),
+          Textarea::make('Address')->hideFromIndex(),
+          Text::make('Phone Number')->hideFromIndex(),
+          Text::make('Email')->hideFromIndex(),
         ];
     }
 
@@ -91,7 +92,7 @@ class Registration extends Resource
 
           Number::make('Total Price')->resolveUsing(function ($price) {
               return number_format($price, 0, ',', '.') . ' VNĐ';
-          })->hideFromIndex(),
+          }),
         ];
     }
 
