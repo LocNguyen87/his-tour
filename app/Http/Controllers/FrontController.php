@@ -19,7 +19,7 @@ class FrontController extends Controller
 
       $tours_hcm = Tour::where('from_id', 1)
       ->orderBy('ordering','asc')
-      ->take(3)
+      ->take(6)
       ->get();
 
       $tours_hn = Tour::where('from_id', 2)
