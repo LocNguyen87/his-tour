@@ -38,7 +38,8 @@ class RegistrationPolicy
 
     public function update($user, Registration $registration)
     {
-        return $user->can('manageRegistration', $registration);
+        // return $user->can('manageRegistration', $registration);
+        return false;
     }
 
     public function delete($user, Registration $registration)
