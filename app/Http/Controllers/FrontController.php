@@ -89,7 +89,16 @@ class FrontController extends Controller
     public function tourDetails($tour)
     {
         $galleryItems = $tour->getMedia('gallery');
-        return view('front.tour-details', ['tour' => $tour, 'galleryItems' => $galleryItems]);
+        $related_tours = null;
+        if ($tour->related_ids) {
+            $related_ids = explode(',', $tour->related_ids);
+            $related_tours = Tour::find($related_ids);
+        }
+        return view('front.tour-details', [
+            'tour' => $tour,
+            'galleryItems' => $galleryItems,
+            'related_tours' =>  $related_tours
+        ]);
     }
 
     public function createRegistration(Request $request, $tour)

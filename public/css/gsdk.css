@@ -6710,7 +6710,8 @@ h3.contact-title::after {
 	color:#fff;
 }
 #hcm-tours .tours-grid,
-#hn-tours .tours-grid {
+#hn-tours .tours-grid,
+.tour-related .tours-grid {
     margin-top: 10pt;
 }
 .japan-explore img,

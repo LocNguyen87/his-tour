@@ -222,6 +222,55 @@
 
   </div>
 </div>
+@if($related_tours)
+<div class="tour-related">
+    <h5 class="tours-title">Tour <b>liên quan</b></h5>
+    <div class="tours-grid row">
+        @foreach($related_tours as $related_tour)
+        <?php
+            $featured_item = $related_tour->getFirstMedia('feature');
+        ?>
+        <div class="col-md-4">
+            <div class="card card-user card-tour normal-tour">
+                <div class="image">
+                <img class="" src="{!! $featured_item->getFullUrl() !!}" alt="..." />
+                </div>
+                <div class="tour-meta clearfix">
+                <span class="pull-left">{{ $related_tour->times }}</span>
+                <span class="pull-right">{{ number_format($related_tour->price, 0, ',', '.') . ' VNĐ' }}</span>
+                </div>
+                <div class="content">
+                    <div class="description">
+                    <a href="{!! route('tourDetails', ['tour' => $related_tour]) !!}">
+                        <h4 class="title">{{ $related_tour->title }}</h4>
+                    </a>
+                    <ul class="list-unstyled list-lines">
+                        <li>
+                            <b>Hành trình:</b> {!! $related_tour->schedule !!}
+                        </li>
+                        <li>
+                            <b>Khởi hành:</b> {{ $related_tour->begin_date->format('d/m/Y') }}
+                        </li>
+                        <li>
+                            <b>Hãng bay:</b> {{ $related_tour->flight }}
+                        </li>
+                    </ul>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a class="btn btn-warning btn-fill btn-block" href="{!! route('tourDetails', ['tour' => $related_tour]) !!}">Đăng ký tour</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a class="btn btn-primary btn-fill btn-block" href="{!! route('tourDetails', ['tour' => $related_tour]) !!}">Chi tiết</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div> <!-- end card -->
+        </div>
+        @endforeach
+    </div>
+</div>
+@endif
 @endsection
 @section('pageScripts')
 <script type="text/javascript">
