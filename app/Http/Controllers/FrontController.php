@@ -265,12 +265,18 @@ class FrontController extends Controller
         $registration->referer = Referer::get();
         $registration->save();
 
-        // send notification email to admin
-        Mail::send('emails.admin', ['registration' => $registration], function ($e) use ($registration) {
-            $e->from('alert@songhantourist.com', 'KILALA JAPAN TOUR');
-            $e->to('loc@breakfield.com.vn', 'KILALA JAPAN TOUR Manager');
-            $e->subject('New JAPAN TOUR Booking Request !');
-        });
+        try {
+            // send notification email to admin
+            Mail::send('emails.admin', ['registration' => $registration], function ($e) use ($registration) {
+                $e->from('alert@songhantourist.com', 'KILALA JAPAN TOUR');
+                $e->to('loc@breakfield.com.vn', 'KILALA JAPAN TOUR Manager');
+                $e->subject('New JAPAN TOUR Booking Request !');
+            });
+        }
+        catch(\Exception $e){
+            Log::error($e);
+        }
+
 
       // we dont need session data anymore
         $request->session()->flush();

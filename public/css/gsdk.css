@@ -6552,10 +6552,11 @@ h3.contact-title::after {
 .tour-tabs .itinerary-tab a,
 .tour-tabs .detail-tab a,
 .tour-tabs .note-tab a {
-	background-repeat: no-repeat;
+  background-repeat: no-repeat;
   margin: 0 30px;
-  padding: 20pt 0 20pt 50pt;
+  padding: 0pt 0 20pt 50pt;
   background-position: left center;
+  background-size: auto 100%
 }
 .tour-tabs .itinerary-tab a {
 	background-image: url('../image/tour-tab-icon-01.png');
@@ -6837,6 +6838,9 @@ body > .navbar-collapse .nav > li {
 }
 body > .navbar-collapse .navbar-nav > li > a, body > .navbar-collapse .navbar-nav > li > a:hover, body > .navbar-collapse .navbar-nav > li > a:focus, body > .navbar-collapse .navbar-nav .open .dropdown-menu > li > a, body > .navbar-collapse .navbar-nav .open .dropdown-menu > li > a:hover, body > .navbar-collapse .navbar-nav .open .dropdown-menu > li > a:focus {
 	opacity:1;
+}
+.slick-initialized .slick-slide {
+    min-height: 80px;
 }
 @media screen and (min-width: 768px) {
   .navbar-right {
