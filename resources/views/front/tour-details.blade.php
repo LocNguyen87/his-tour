@@ -16,7 +16,7 @@
                           {{ csrf_field() }}
                           <input type="hidden" name="tour_id" value="{{ $tour->id }}" readonly/>
                           <div class="form-group">
-                            <input type="text" class="form-control" id="tour_name" placeholder="Tên tour" value="{{ $tour->title }}" readonly>
+                            <input type="text" class="form-control" id="tour_name" placeholder="Tên tour" value="{{ $tour->title }} ({{ number_format($tour->price, 0, ',', '.') }} VNĐ)" readonly>
                           </div>
                           <div class="form-group">
                             <div class="row">
