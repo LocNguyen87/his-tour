@@ -2,9 +2,8 @@
 @section('title', 'Kilala Japan Tour - Tour du lịch Nhật Bản - Đăng ký tour - Phương thức thanh toán')
 
 @section('topBanner')
-<div class="header-banner">
+<div class="header-banner short-banner" style="background-image: url('{{ asset('image/tour-registration-banner.jpg') }}')">
     <div class="header-image">
-        <img src="{{ asset('image/tour-registration-banner.jpg') }}" alt="" />
     </div>
 </div>
 @endsection

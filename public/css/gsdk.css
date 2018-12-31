@@ -6825,6 +6825,9 @@ form#registration-init-form .form-control {
 .header-banner.home-banner {
 		height: 450px;
 }
+.header-banner.short-banner {
+	height:285px;
+}
 body > .navbar-collapse::after {
     background-color: #b33a3a;
 }
@@ -6908,6 +6911,9 @@ body > .navbar-collapse .navbar-nav > li > a, body > .navbar-collapse .navbar-na
 	.header-banner.all-tours-banner,
 	.header-banner.home-banner {
 		height: 450px;
+	}
+	.header-banner.short-banner {
+    background-position: center;
 	}
 	.tour-meta .info.info-horizontal {
 		text-align: left;
