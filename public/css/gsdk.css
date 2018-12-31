@@ -3556,15 +3556,17 @@ body > .navbar-collapse.collapse {
 .info-horizontal {
   text-align: left;
   margin-top: 0;
+	margin-bottom:0;
+	clear:both
 }
 .info-horizontal .icon {
   float: left;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-right: 20px;
 }
 .info-horizontal .description {
   overflow: hidden;
-  padding-top:20pt;
+  padding-top:10pt;
   color:#f34d00;
 }
 .info-horizontal .description h5 {
@@ -6850,6 +6852,7 @@ body > .navbar-collapse .navbar-nav > li > a, body > .navbar-collapse .navbar-na
 	}
 }
 @media screen and (max-width: 991px) {
+
 	form#registration-init-form .form-control {
 		margin-bottom:5px;
 	}
@@ -6952,8 +6955,5 @@ body > .navbar-collapse .navbar-nav > li > a, body > .navbar-collapse .navbar-na
 @media screen and (max-width: 499px) {
 	h1.tour-title, .tours-title {
 		height:70px;
-	}
-	.header-banner.all-tours-banner {
-		height:150px;
 	}
 }

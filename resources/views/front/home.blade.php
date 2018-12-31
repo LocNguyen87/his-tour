@@ -175,16 +175,7 @@
         },
         adults: {
           required: true
-        },
-        infants: {
-          required: true
-        },
-        childs_shared: {
-          required: true
-        },
-        childs_single: {
-          required: true
-        },
+        }
       },
       messages: {
         tour_id: {
@@ -192,16 +183,7 @@
         },
         adults: {
           required: 'Vui lòng bổ sung thông tin'
-        },
-        infants: {
-          required: 'Vui lòng bổ sung thông tin'
-        },
-        childs_shared: {
-          required: 'Vui lòng bổ sung thông tin'
-        },
-        childs_single: {
-          required: 'Vui lòng bổ sung thông tin'
-        },
+        }
       },
       errorPlacement: function(error, element) {
   	    if ( element.is(":radio") )

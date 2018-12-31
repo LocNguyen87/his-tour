@@ -54,12 +54,31 @@ class FrontController extends Controller
 
     public function getAllTours(Request $request) {
 
+      $featured_tour = Tour::where('featured', 1)
+      ->orderBy('ordering','asc')
+      ->take(3)
+      ->get();
+      // $selected_from = $from;
+
+      $tours_hcm = Tour::where('from_id', 1)
+      ->orderBy('ordering','asc')
+      ->take(6)
+      ->get();
+
+      $tours_hn = Tour::where('from_id', 2)
+      ->orderBy('ordering','asc')
+      ->take(3)
+      ->get();
+
       $tours = Tour::orderBy('ordering','asc')
       ->take(30)
       ->get();
 
       return view('front.tours', [
-        'tours' => $tours
+        'featured_tours' => $featured_tour,
+        'tours_hcm'  =>  $tours_hcm,
+        'tours_hn'  =>  $tours_hn,
+        'tours'     =>  $tours
       ]);
     }
 
