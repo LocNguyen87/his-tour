@@ -187,7 +187,8 @@
               contentType: false,
               type: 'POST',
               beforeSend: function() {
-                console.log('before send');
+                $('#doComplete').attr('disabled', true)
+                $('#doComplete').html('Xin vui lòng đợi ...')
               },
               success: function (xml, textStatus, xhr) {
               	if(xhr.responseJSON.result === 'registration_created') { // registration created successfully
