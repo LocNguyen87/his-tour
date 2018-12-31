@@ -6952,12 +6952,12 @@ body > .navbar-collapse .navbar-nav > li > a, body > .navbar-collapse .navbar-na
 }
 @media screen and (max-width: 640px) {
 	.card-user.card-tour.normal-tour .image {
-		height:220px;
+		height:350px;
 	}
 }
 @media screen and (max-width: 515px) {
 	.card-user.card-tour.normal-tour .image {
-		height:170px;
+		height:350px;
 	}
 }
 @media screen and (max-width: 499px) {
