@@ -275,14 +275,14 @@
 @section('pageScripts')
 <script type="text/javascript">
   jQuery(document).ready(function($) {
-    $('.tour-tabs').slick({
-        slide: 'li',
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        dots: false,
-        infinite: false,
-    })
+    // $('.tour-tabs').slick({
+    //     slide: 'li',
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1,
+    //     arrows: false,
+    //     dots: false,
+    //     infinite: false,
+    // })
 
     $('#doSubmit').on('click', function(e) {
       e.preventDefault()
