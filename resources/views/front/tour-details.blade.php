@@ -1,15 +1,14 @@
 @extends('layouts.app')
 @section('title', $tour->title)
 @section('topBanner')
-<div class="header-banner">
+<div class="header-banner" style="background-image: url('{{ asset('image/parallax-text.jpg') }}')">
     <div class="header-image">
-        <img src="{{ asset('image/parallax-text.jpg') }}" alt="" />
         <div class="top-form-wrapper">
           <div class="container">
             <div class="row">
-              <div class="col-md-7 col-md-offset-5">
+              <div class="col-md-6 col-md-offset-6">
                 <div class="card">
-                    <div class="top-form-header" style="background_color:#152ac3;">
+                    <div class="top-form-header">
                       Đăng ký tour du lịch Nhật
                     </div>
                     <div class="content">
@@ -112,7 +111,7 @@
 @section('mainContent')
 <div class="tour-meta">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info info-horizontal">
            <div class="icon icon-transparent icon-sm">
                <img src="{{ asset('image/tour-details-icon-01.png') }}" alt="" />
@@ -122,7 +121,7 @@
            </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info info-horizontal">
            <div class="icon icon-transparent icon-sm">
                <img src="{{ asset('image/tour-details-icon-02.png') }}" alt="" />
@@ -132,7 +131,7 @@
            </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info info-horizontal">
            <div class="icon icon-transparent icon-sm">
                <img src="{{ asset('image/tour-details-icon-03.png') }}" alt="" />
@@ -142,7 +141,7 @@
            </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info info-horizontal">
            <div class="icon icon-transparent icon-sm">
                <img src="{{ asset('image/tour-details-icon-04.png') }}" alt="" />

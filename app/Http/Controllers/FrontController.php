@@ -11,6 +11,10 @@ use Facades\Spatie\Referer\Referer;
 class FrontController extends Controller
 {
     public function getHome(Request $request) {
+      $tours = Tour::orderBy('ordering','asc')
+      ->take(30)
+      ->get();
+
       $featured_tour = Tour::where('featured', 1)
       ->orderBy('ordering','asc')
       ->take(3)
@@ -31,6 +35,20 @@ class FrontController extends Controller
         'featured_tours' => $featured_tour,
         'tours_hcm'  =>  $tours_hcm,
         'tours_hn'  =>  $tours_hn,
+        'tours'     =>  $tours
+      ]);
+    }
+
+    public function getTourInfo(Request $request) {
+      $tour = Tour::findOrFail($request->tour_id);
+
+      return response()->json([
+        'result'      =>  'found',
+        'tour_id'     =>  $tour->id,
+        'tour_price'  =>  number_format($tour->price, 0, ',', '.') . ' VNĐ',
+        'tour_begin'  =>  $tour->begin_date->format('d/m/Y'),
+        'tour_from'   =>  $tour->from->title,
+        'tour_slug'   =>  $tour->title_alias
       ]);
     }
 

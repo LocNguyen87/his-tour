@@ -5,9 +5,8 @@
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
 	<title>@yield('title')</title>
-
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
@@ -23,7 +22,7 @@
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-ct-azure navbar-transparent" role="navigation">
-      <div class="container">
+      <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button id="menu-toggle" type="button" class="navbar-toggle">

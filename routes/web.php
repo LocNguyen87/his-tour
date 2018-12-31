@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'FrontController@getHome')->name('home');
+Route::post('/api/getTourInfo', 'FrontController@getTourInfo')->name('getTourInfo');
 Route::get('/tour-du-lich', 'FrontController@getAllTours')->name('tours');
 Route::get('/chi-tiet-tour/{tour}', 'FrontController@tourDetails')->name('tourDetails');
 Route::post('/chi-tiet-tour/{tour}', 'FrontController@createRegistration')->name('createRegistration');
