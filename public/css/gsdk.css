@@ -6855,7 +6855,9 @@ body > .navbar-collapse .navbar-nav > li > a, body > .navbar-collapse .navbar-na
 	}
 }
 @media screen and (max-width: 991px) {
-
+	.summary-card {
+    margin-top: 20pt;
+	}
 	form#registration-init-form .form-control {
 		margin-bottom:5px;
 	}
