@@ -52,6 +52,7 @@ class ExportRegistrationsBreakField extends DownloadExcel implements
             $registration->childs_single_number,
             $registration->childs_single_price,
             $registration->total_price,
+            $registration->payment_method,
             Date::dateTimeToExcel($registration->created_at),
         ];
     }
@@ -73,7 +74,8 @@ class ExportRegistrationsBreakField extends DownloadExcel implements
             'L' => NumberFormat::FORMAT_NUMBER,
             'M' => '#,##0',
             'N' => '#,##0',
-            'O' => NumberFormat::FORMAT_DATE_DATETIME
+            'O' => NumberFormat::FORMAT_TEXT,
+            'P' => NumberFormat::FORMAT_DATE_DATETIME
         ];
     }
 
@@ -94,6 +96,7 @@ class ExportRegistrationsBreakField extends DownloadExcel implements
             'Childs (Single)',
             'Childs (Single) Price',
             'Total Price',
+            'Payment Method',
             'Created At'
         ];
     }

@@ -283,7 +283,7 @@
             autoCenter: true,
             fitInViewport: true,
     		spacing: 0,
-    		arrowsAutoHide: false
+    		arrowsAutoHide: true
     	}
     });
     var slider = $('#tab-slider');
