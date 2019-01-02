@@ -97,7 +97,7 @@ class FrontController extends Controller
         return view('front.tour-details', [
             'tour' => $tour,
             'galleryItems' => $galleryItems,
-            'related_tours' =>  $related_tours
+            'related_tours' => $related_tours
         ]);
     }
 
@@ -272,8 +272,14 @@ class FrontController extends Controller
                 $e->to('loc@breakfield.com.vn', 'KILALA JAPAN TOUR Manager');
                 $e->subject('New JAPAN TOUR Booking Request !');
             });
-        }
-        catch(\Exception $e){
+
+            // send notification email to admin
+            Mail::send('emails.user', ['registration' => $registration], function ($e) use ($registration) {
+                $e->from('alert@songhantourist.com', 'KILALA JAPAN TOUR');
+                $e->to($registration->email, $registration->full_name);
+                $e->subject('KILALA JAPAN TOUR Booking Confirmation !');
+            });
+        } catch (\Exception $e) {
             Log::error($e);
         }
 
