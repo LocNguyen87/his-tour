@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="{{ asset('css/lightGallery.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/lg-transitions.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/tippy.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/slick.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/slick-theme.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/royalslider.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/rs-default-inverted.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/gsdk.css') }}" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Grand+Hotel|Open+Sans:400,300' rel='stylesheet' type='text/css'>
@@ -93,12 +93,11 @@
   <script src="{{ asset('js/jquery-ui.custom.min.js') }}"></script>
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/tippy.js') }}"></script>
-    <script src="{{ asset('js/slick.min.js') }}"></script>
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('js/additional-methods.min.js') }}"></script>
     <script src="{{ asset('js/messages_vi.min.js') }}"></script>
     <script src="{{ asset('js/lightgallery-all.min.js') }}"></script>
-
+    <script src="{{ asset('js/jquery.royalslider.min.js') }}"></script>
   <!-- lightgallery plugins -->
   <script src="{{ asset('js/lg-thumbnail.min.js') }}"></script>
   <script src="{{ asset('js/lg-fullscreen.min.js') }}"></script>

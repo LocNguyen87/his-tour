@@ -6510,19 +6510,19 @@ h3.contact-title::after {
 	font-size:13pt;
 	color:#898989;
 }
-.tour-tab-content .tab-pane {
-  text-align: left;
+.tour-tab-content {
+    text-align: left;
 	background:#ebebeb;
 	padding:15px;
 }
-.tour-tab-content .tab-pane h3 {
+.tour-tab-content h3 {
 	font-family: 'UTM Avo Regular', Arial, sans-serif;
 	color:#003aa0;
 	font-size:15pt;
 	position:relative;
 	padding-left: 30px;
 }
-.tour-tab-content .tab-pane h3::before {
+.tour-tab-content h3::before {
 	content: '';
   display: block;
   margin-right: 20px;
@@ -6549,36 +6549,7 @@ h3.contact-title::after {
 .tour-tabs > .active{
 	background:url('../image/tab-active-icon.png') no-repeat 40px bottom transparent;
 }
-.tour-tabs .itinerary-tab a,
-.tour-tabs .detail-tab a,
-.tour-tabs .note-tab a {
-  background-repeat: no-repeat;
-  margin: 0 30px;
-  padding: 0pt 0 20pt 50pt;
-  background-position: left center;
-  background-size: auto 100%
-}
-.tour-tabs .itinerary-tab a {
-	background-image: url('../image/tour-tab-icon-01.png');
-}
-.tour-tabs .detail-tab a {
-	background-image: url('../image/tour-tab-icon-02.png');
-}
-.tour-tabs .note-tab a {
-	background-image: url('../image/tour-tab-icon-03.png');
-}
-.tour-tabs .itinerary-tab:hover a,
-.tour-tabs .itinerary-tab.active a {
-	background-image: url('../image/tour-tab-icon-01-active.png');
-}
-.tour-tabs .detail-tab:hover a,
-.tour-tabs .detail-tab.active a {
-	background-image: url('../image/tour-tab-icon-02-active.png');
-}
-.tour-tabs .note-tab:hover a,
-.tour-tabs .note-tab.active a {
-	background-image: url('../image/tour-tab-icon-03-active.png');
-}
+
 .tour-tab-content {
   margin-top: -2px;
 }
@@ -6661,9 +6632,6 @@ h3.contact-title::after {
 }
 .payment-note h5 {
 	color:#003aa0;
-}
-.thank-you-background .summary-card-content.content {
-
 }
 .tour-card-title {
 	margin-bottom:10pt;
@@ -6839,8 +6807,98 @@ body > .navbar-collapse .nav > li {
 body > .navbar-collapse .navbar-nav > li > a, body > .navbar-collapse .navbar-nav > li > a:hover, body > .navbar-collapse .navbar-nav > li > a:focus, body > .navbar-collapse .navbar-nav .open .dropdown-menu > li > a, body > .navbar-collapse .navbar-nav .open .dropdown-menu > li > a:hover, body > .navbar-collapse .navbar-nav .open .dropdown-menu > li > a:focus {
 	opacity:1;
 }
-.slick-initialized .slick-slide {
-    min-height: 80px;
+.contentSlider {
+width: 100%;
+}
+.contentSlider,
+.contentSlider .rsOverflow,
+.contentSlider .rsSlide,
+.contentSlider .rsVideoFrameHolder,
+.contentSlider .rsThumbs {
+background: #eee;
+color: #000;
+}
+
+.contentSlider .rsSlide,
+.contentSlider .rsOverflow {
+background: #eee;
+}
+.contentSlider h3 {
+font-size: 24px;
+line-height: 31px;
+margin: 12px 0 8px;
+}
+.contentSlider img {
+max-width: 100%;
+height: auto;
+display: block;
+}
+.content-slider-bg {
+width: 86%;
+padding: 24px 7%;
+background: #eee;
+}
+div#tab-slider {
+    background: none;
+}
+.rsDefaultInv .rsThumbsHor {
+    margin:20pt 0;
+    background:none;
+}
+.rsDefaultInv .rsThumb {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    float: left;
+    overflow: hidden;
+    width: 250px;
+    height: 100px;
+}
+.rsDefaultInv .rsThumb.rsNavSelected {
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+.rsDefaultInv .rsThumb span {
+    text-shadow: none;
+    font-size: 12pt;
+    font-family: 'UTM Avo Bold', Arial, sans-serif;
+    color:#898989;
+    display: block;
+    padding-top: 20px;
+}
+.rsDefaultInv .rsThumb.rsNavSelected span {
+    color: #f34d00;
+}
+.rsTmb.itinerary-tab,
+.rsTmb.detail-tab,
+.rsTmb.note-tab {
+  background-repeat: no-repeat;
+  margin: 0 30px;
+  padding: 0pt 0 20pt 50pt;
+  background-position: left center;
+  background-size: auto 100%
+}
+.rsTmb.itinerary-tab {
+	background-image: url('../image/tour-tab-icon-01.png');
+}
+.rsTmb.detail-tab {
+	background-image: url('../image/tour-tab-icon-02.png');
+}
+.rsTmb.note-tab {
+	background-image: url('../image/tour-tab-icon-03.png');
+}
+.rsDefaultInv .rsThumb.rsNavSelected .rsTmb.itinerary-tab,
+.rsDefaultInv .rsThumb:hover .rsTmb.itinerary-tab {
+	background-image: url('../image/tour-tab-icon-01-active.png');
+}
+.rsDefaultInv .rsThumb.rsNavSelected .rsTmb.detail-tab,
+.rsDefaultInv .rsThumb:hover .rsTmb.detail-tab {
+	background-image: url('../image/tour-tab-icon-02-active.png');
+}
+.rsDefaultInv .rsThumb.rsNavSelected .rsTmb.note-tab,
+.rsDefaultInv .rsThumb:hover .rsTmb.note-tab {
+	background-image: url('../image/tour-tab-icon-03-active.png');
 }
 @media screen and (min-width: 768px) {
   .navbar-right {
@@ -6899,6 +6957,19 @@ body > .navbar-collapse .navbar-nav > li > a, body > .navbar-collapse .navbar-na
 	.navbar .navbar-nav > li > a {
 	    margin: 10px 0;
 	}
+}
+@media screen and (max-width: 800px) and (min-width: 0px) {
+    .rsDefaultInv .rsThumbsHor {
+        height:100px;
+    }
+    .rsDefaultInv .rsThumb {
+        width:350px;
+        height:100px;
+    }
+    .rsTmb.itinerary-tab, .rsTmb.detail-tab, .rsTmb.note-tab {
+        padding: 0pt 0 20pt 110pt;
+        background-position: 50pt center;
+    }
 }
 @media screen and (max-width: 767px) {
 	.nav>li {

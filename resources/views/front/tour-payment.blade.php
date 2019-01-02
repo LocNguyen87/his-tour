@@ -201,8 +201,8 @@
               		alert('Vui lòng chọn phương thức thanh toán')
               	}
               },
-      				error: function(error) {
-      						alert('Có lỗi khi đăng ký')
+      		  error: function(error) {
+      			alert('Có lỗi khi đăng ký')
               }
             });
       }

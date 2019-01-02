@@ -192,35 +192,29 @@
     </div>
   </div>
 </div>
-<div class="tour-tabs">
-  <div>
-
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs tour-tabs" role="tablist">
-      <li role="presentation" class="itinerary-tab active">
-        <a href="#itinerary" aria-controls="itinerary" role="tab" data-toggle="tab">Lịch trình</a>
-      </li>
-      <li role="presentation" class="detail-tab">
-        <a href="#details" aria-controls="details" role="tab" data-toggle="tab">Chi tiết</a>
-      </li>
-      <li role="presentation" class="note-tab">
-        <a href="#note" aria-controls="note" role="tab" data-toggle="tab">Lưu ý</a>
-      </li>
-    </ul>
-
-    <!-- Tab panes -->
-    <div class="tab-content tour-tab-content">
-      <div role="tabpanel" class="tab-pane fade in active" id="itinerary">
+<div id="tab-slider" class="royalSlider contentSlider rsDefaultInv">
+    <div class="tour-tab-content">
         @if($tour->itinerary_file)
         <a href="{!! url('/storage/' . $tour->itinerary_file) !!}" class="downloadItinerary btn btn-block btn-fill btn-lg btn-info">Download lịch trình  <i class="fa fa-download" aria-hidden="true"></i></a>
         @endif
         {!! $tour->itinerary !!}
-      </div>
-      <div role="tabpanel" class="tab-pane" id="details">{!! $tour->detail !!}</div>
-      <div role="tabpanel" class="tab-pane" id="note">{!! $tour->note !!}</div>
+        <div class="rsTmb itinerary-tab">
+            <span>Lịch trình</span>
+        </div>
+    </div>
+    <div class="tour-tab-content">
+        {!! $tour->detail !!}
+        <div class="rsTmb detail-tab">
+            <span>Chi tiết</span>
+        </div>
+    </div>
+    <div class="tour-tab-content">
+        {!! $tour->note !!}
+        <div class="rsTmb note-tab">
+            <span>Lưu ý</span>
+        </div>
     </div>
 
-  </div>
 </div>
 @if($related_tours)
 <div class="tour-related">
@@ -275,14 +269,25 @@
 @section('pageScripts')
 <script type="text/javascript">
   jQuery(document).ready(function($) {
-    // $('.tour-tabs').slick({
-    //     slide: 'li',
-    //     slidesToShow: 1,
-    //     slidesToScroll: 1,
-    //     arrows: false,
-    //     dots: false,
-    //     infinite: false,
-    // })
+    $('#tab-slider').royalSlider({
+        autoHeight: true,
+        arrowsNav: true,
+        fadeinLoadedSlide: true,
+        controlNavigation: 'thumbnails',
+        loop: false,
+        loopRewind: true,
+        numImagesToPreload: 6,
+        keyboardNavEnabled: true,
+        usePreloader: false,
+        thumbs: {
+            autoCenter: true,
+            fitInViewport: true,
+    		spacing: 0,
+    		arrowsAutoHide: false
+    	}
+    });
+    var slider = $('#tab-slider');
+    slider.prepend(slider.find('.rsNav'));
 
     $('#doSubmit').on('click', function(e) {
       e.preventDefault()
