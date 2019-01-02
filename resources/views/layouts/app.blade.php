@@ -10,7 +10,7 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/lightGallery.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/lightgallery.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/lg-transitions.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/tippy.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/royalslider.css') }}" />
