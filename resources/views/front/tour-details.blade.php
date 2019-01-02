@@ -280,7 +280,7 @@
         keyboardNavEnabled: true,
         usePreloader: false,
         thumbs: {
-            autoCenter: true,
+            autoCenter: false,
             fitInViewport: true,
     		spacing: 0,
     		arrowsAutoHide: true
