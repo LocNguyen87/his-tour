@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Tour;
 use App\Registration;
+use App\LocationFrom;
 use Facades\Spatie\Referer\Referer;
 
 class FrontController extends Controller
@@ -51,6 +52,7 @@ class FrontController extends Controller
             'tour_price' => number_format($tour->price, 0, ',', '.').' VNĐ',
             'tour_begin' => $tour->begin_date->format('d/m/Y'),
             'tour_from' => $tour->from->title,
+            'tour_from_id' => $tour->from->id,
             'tour_slug' => $tour->title_alias,
         ]);
     }
@@ -59,8 +61,24 @@ class FrontController extends Controller
     {
         $tours = Tour::all();
         $dates = $tours->pluck('begin_date');
+        $formatDates = [];
+        foreach ($dates as $date) {
+            $fd = $date->format('d/m/Y');
+            $formatDates[] = $fd;
+        }
 
-        return $dates;
+        return response()->json([
+            'dates' => $formatDates,
+        ]);
+    }
+
+    public function getAvailableLocationFrom(Request $request)
+    {
+        $locations = LocationFrom::all();
+
+        return response()->json([
+            'locations' => $locations,
+        ]);
     }
 
     public function getAllTours(Request $request)

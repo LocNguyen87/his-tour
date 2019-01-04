@@ -30,10 +30,14 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-md-6">
-                              <input type="text" class="form-control" id="begin_date" placeholder="Ngày khởi hành" readonly>
+                              <select id="begin_date" class="selectpicker" data-style="form-control">
+                                  <option selected> Chọn ngày khởi hành</option>
+                              </select>
                             </div>
                             <div class="col-md-6">
-                              <input type="text" class="form-control" id="location_from" placeholder="Điểm khởi hành" readonly>
+                                <select id="location_from" class="selectpicker" data-style="form-control">
+                                    <option selected> Chọn điểm khởi hành</option>
+                                </select>
                             </div>
                           </div>
                         </div>
@@ -142,6 +146,42 @@
     });
     new Tippy('.tippy')
 
+    // get all available date
+    $.ajax({
+        url: '{{ url('/api/getAvailableDates') }}',
+        type: 'GET',
+        beforeSend: function() {
+        },
+        success: function(xml, textStatus, xhr) {
+          var dates = xhr.responseJSON.dates
+          dates.forEach(d => {
+            $('#begin_date').append('<option value="'+ d +'">' + d + '</option>')
+            $('#begin_date').selectpicker('refresh')
+          });
+        },
+        error: function() {
+          alert('Đã xảy ra lỗi khi tìm thông tin tour!!! Hãy thử lại sau.');
+        }
+    })
+
+    // get all available location from
+    $.ajax({
+        url: '{{ url('/api/getAvailableLocationFrom') }}',
+        type: 'GET',
+        beforeSend: function() {
+        },
+        success: function(xml, textStatus, xhr) {
+          var locations = xhr.responseJSON.locations
+          locations.forEach(location => {
+            $('#location_from').append('<option value="'+ location.id +'">' + location.title + '</option>')
+            $('#location_from').selectpicker('refresh')
+          });
+        },
+        error: function() {
+          alert('Đã xảy ra lỗi khi tìm thông tin tour!!! Hãy thử lại sau.');
+        }
+    })
+
     $('#tour_select').on('change', function() {
       var tour_id = $(this).val();
       var begin_date = $('#begin_date');
@@ -156,8 +196,12 @@
   					beforeSend: function() {
   					},
   					success: function(xml, textStatus, xhr) {
-              begin_date.val(xhr.responseJSON.tour_begin)
-              location_from.val(xhr.responseJSON.tour_from)
+              $('#begin_date option[value="' + xhr.responseJSON.tour_begin + '"]').prop('selected', 'selected')
+              $('#begin_date').selectpicker('refresh')
+
+              $('#location_from option[value="' + xhr.responseJSON.tour_from_id + '"]').prop('selected', 'selected')
+              $('#location_from').selectpicker('refresh')
+
               tour_slug.val(xhr.responseJSON.tour_slug)
               $('input[name="tour_id"]').val(xhr.responseJSON.tour_id)
               $('#doSubmit').attr('disabled', false)

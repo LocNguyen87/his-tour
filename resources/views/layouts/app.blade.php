@@ -92,12 +92,13 @@
   <script src="{{ asset('js/jquery.js') }}"></script>
   <script src="{{ asset('js/jquery-ui.custom.min.js') }}"></script>
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/tippy.js') }}"></script>
-    <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('js/additional-methods.min.js') }}"></script>
-    <script src="{{ asset('js/messages_vi.min.js') }}"></script>
-    <script src="{{ asset('js/lightgallery-all.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.royalslider.min.js') }}"></script>
+  <script src="{{ asset('js/moment.js') }}"></script>
+  <script src="{{ asset('js/tippy.js') }}"></script>
+  <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+  <script src="{{ asset('js/additional-methods.min.js') }}"></script>
+  <script src="{{ asset('js/messages_vi.min.js') }}"></script>
+  <script src="{{ asset('js/lightgallery-all.min.js') }}"></script>
+  <script src="{{ asset('js/jquery.royalslider.min.js') }}"></script>
   <!-- lightgallery plugins -->
   <script src="{{ asset('js/lg-thumbnail.min.js') }}"></script>
   <script src="{{ asset('js/lg-fullscreen.min.js') }}"></script>
