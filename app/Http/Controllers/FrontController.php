@@ -21,7 +21,7 @@ class FrontController extends Controller
             ->orderBy('ordering', 'asc')
             ->take(3)
             ->get();
-      // $selected_from = $from;
+        // $selected_from = $from;
 
         $tours_hcm = Tour::where('from_id', 1)
             ->orderBy('ordering', 'asc')
@@ -37,7 +37,7 @@ class FrontController extends Controller
             'featured_tours' => $featured_tour,
             'tours_hcm' => $tours_hcm,
             'tours_hn' => $tours_hn,
-            'tours' => $tours
+            'tours' => $tours,
         ]);
     }
 
@@ -48,21 +48,27 @@ class FrontController extends Controller
         return response()->json([
             'result' => 'found',
             'tour_id' => $tour->id,
-            'tour_price' => number_format($tour->price, 0, ',', '.') . ' VNĐ',
+            'tour_price' => number_format($tour->price, 0, ',', '.').' VNĐ',
             'tour_begin' => $tour->begin_date->format('d/m/Y'),
             'tour_from' => $tour->from->title,
-            'tour_slug' => $tour->title_alias
+            'tour_slug' => $tour->title_alias,
         ]);
+    }
+
+    public function getAvailableDates(Request $request)
+    {
+        $tours = Tour::all();
+        $dates = $tours->pluck('begin_date');
+
+        return $dates;
     }
 
     public function getAllTours(Request $request)
     {
-
         $featured_tour = Tour::where('featured', 1)
             ->orderBy('ordering', 'asc')
             ->take(3)
             ->get();
-      // $selected_from = $from;
 
         $tours_hcm = Tour::where('from_id', 1)
             ->orderBy('ordering', 'asc')
@@ -82,7 +88,7 @@ class FrontController extends Controller
             'featured_tours' => $featured_tour,
             'tours_hcm' => $tours_hcm,
             'tours_hn' => $tours_hn,
-            'tours' => $tours
+            'tours' => $tours,
         ]);
     }
 
@@ -94,10 +100,11 @@ class FrontController extends Controller
             $related_ids = explode(',', $tour->related_ids);
             $related_tours = Tour::find($related_ids);
         }
+
         return view('front.tour-details', [
             'tour' => $tour,
             'galleryItems' => $galleryItems,
-            'related_tours' => $related_tours
+            'related_tours' => $related_tours,
         ]);
     }
 
@@ -109,19 +116,20 @@ class FrontController extends Controller
         \Session::put('childs_single_number', $request->childs_single);
 
         $redirect = URL::temporarySignedRoute('tourRegistration', now()->addMinutes(60), ['tour' => $tour]);
+
         return response()->json([
             'result' => 'session_set',
-            'redirect' => $redirect
+            'redirect' => $redirect,
         ]);
     }
 
     public function tourRegistration(Request $request, $tour)
     {
-      // delete session data
-      // $request->session()->flush();
-      // abort(401);
+        // delete session data
+        // $request->session()->flush();
+        // abort(401);
 
-      // check valid url
+        // check valid url
         if (!$request->hasValidSignature()) {
             abort(401);
         }
@@ -145,7 +153,7 @@ class FrontController extends Controller
         $total_price = $adults_price + $infants_price + $childs_shared_price + $childs_single_price;
         \Session::put('total_price', $total_price);
 
-      // add tour info to session
+        // add tour info to session
         \Session::put('tour_id', $tour->id);
 
         return view('front.tour-registration', [
@@ -158,7 +166,7 @@ class FrontController extends Controller
             'childs_shared_price' => $childs_shared_price,
             'childs_single_number' => $childs_single_number,
             'childs_single_price' => $childs_single_price,
-            'total_price' => $total_price
+            'total_price' => $total_price,
         ]);
     }
 
@@ -174,13 +182,13 @@ class FrontController extends Controller
 
         return response()->json([
             'result' => 'details_set',
-            'redirect' => $redirect
+            'redirect' => $redirect,
         ]);
     }
 
     public function tourPaymentUpdateForm(Request $request, $tour)
     {
-      // check valid url
+        // check valid url
         if (!$request->hasValidSignature()) {
             abort(401);
         }
@@ -211,13 +219,13 @@ class FrontController extends Controller
             'childs_single_number' => $childs_single_number,
             'childs_single_price' => $childs_single_price,
             'total_price' => $total_price,
-            'back_url' => $back_url
+            'back_url' => $back_url,
         ]);
     }
 
     public function tourCreateRegistration(Request $request, $tour)
     {
-      // get and assign session value to variables
+        // get and assign session value to variables
         $adults_number = \Session::get('adults_number');
         $adults_price = \Session::get('adults_price');
 
@@ -237,10 +245,10 @@ class FrontController extends Controller
         $address = \Session::get('address');
         $payment_method = $request->paymentOption;
 
-      // create registration object
-        $registration = new Registration;
+        // create registration object
+        $registration = new Registration();
         $registration->tour_id = $tour->id;
-        $registration->registration_code = date("ymd") . strval(mt_rand(1000, 999999));
+        $registration->registration_code = date('ymd').strval(mt_rand(1000, 999999));
         $registration->full_name = $full_name;
         $registration->address = $address;
         $registration->phone_number = $phone_number;
@@ -283,30 +291,28 @@ class FrontController extends Controller
             Log::error($e);
         }
 
-
-      // we dont need session data anymore
+        // we dont need session data anymore
         $request->session()->flush();
 
-      // sign and create temporary thank you page with new registration data
+        // sign and create temporary thank you page with new registration data
         $redirect = URL::temporarySignedRoute('thankYouPage', now()->addMinutes(30), [
-            'registration' => $registration
+            'registration' => $registration,
         ]);
 
-
-
-      // return json to ajax request with redirection
+        // return json to ajax request with redirection
         return response()->json([
             'result' => 'registration_created',
-            'redirect' => $redirect
+            'redirect' => $redirect,
         ]);
     }
 
     public function thankYouPage(Request $request, Registration $registration)
     {
-      // check valid url
+        // check valid url
         if (!$request->hasValidSignature()) {
             abort(401);
         }
+
         return view('front.tour-thankyou', ['registration' => $registration]);
     }
 }

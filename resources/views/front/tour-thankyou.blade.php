@@ -25,7 +25,7 @@ Bạn vui lòng kiểm tra lại các thông tin đăng ký bên dưới, liên 
               <h5>Tour <b>{{ $registration->tour->title }}</b></h5>
               <ul class="list-unstyled list-lines">
                   <li>
-                      Ngày khởi hành: <b>{{ $registration->tour->begin_date->format('d/m/Y') }}</b>
+                      Ngày khởi hành: <b>{{ $registration->tour->begin_date->format('d/m/Y') }} @if($registration->tour->date_note) ({{ $registration->tour->date_note }}) @endif</b>
                   </li>
                   <li>
                       Điểm khởi hành: <b>{{ $registration->tour->from->title }}</b>
@@ -55,26 +55,26 @@ Bạn vui lòng kiểm tra lại các thông tin đăng ký bên dưới, liên 
                       </li>
                   </ul>
                 </div>
+                @if($registration->infants_number > 0)
                 <div class="col-md-6">
-                  @if($registration->infants_number > 0)
                   <h5>Giá tour cho em bé 0 ~ 2 tuổi</h5>
-                  <ul class="list-unstyled list-lines">
-                      <li>
-                          Giá mỗi em bé: <b>{{ number_format($registration->tour->price*0.3, 0, ',', '.') }}</b>
-                      </li>
-                      <li>
-                          Số em bé: <b>{{ $registration->infants_number }}</b>
-                      </li>
-                      <li>
-                          Tổng giá em bé: <b>{{ number_format($registration->infants_price, 0, ',', '.') }}</b>
-                      </li>
-                  </ul>
-                  @endif
+                    <ul class="list-unstyled list-lines">
+                        <li>
+                            Giá mỗi em bé: <b>{{ number_format($registration->tour->price*0.3, 0, ',', '.') }}</b>
+                        </li>
+                        <li>
+                            Số em bé: <b>{{ $registration->infants_number }}</b>
+                        </li>
+                        <li>
+                            Tổng giá em bé: <b>{{ number_format($registration->infants_price, 0, ',', '.') }}</b>
+                        </li>
+                    </ul>
                 </div>
+                @endif
               </div>
               <div class="row">
+                @if($registration->childs_shared_number > 0)
                 <div class="col-md-6">
-                  @if($registration->childs_shared_number > 0)
                   <h5>Giá tour cho trẻ em 2 ~ 12 tuổi (Giường chung)</h5>
                   <ul class="list-unstyled list-lines">
                       <li>
@@ -87,10 +87,10 @@ Bạn vui lòng kiểm tra lại các thông tin đăng ký bên dưới, liên 
                           Tổng giá trẻ em: <b>{{ number_format($registration->childs_shared_price, 0, ',', '.') }}</b>
                       </li>
                   </ul>
-                  @endif
                 </div>
+                @endif
+                @if($registration->childs_single_number > 0)
                 <div class="col-md-6">
-                  @if($registration->childs_single_number > 0)
                   <h5>Giá tour cho trẻ em 2 ~ 12 tuổi (Giường riêng)</h5>
                   <ul class="list-unstyled list-lines">
                       <li>
@@ -103,8 +103,8 @@ Bạn vui lòng kiểm tra lại các thông tin đăng ký bên dưới, liên 
                           Tổng giá trẻ em: <b>{{ number_format($registration->childs_single_price, 0, ',', '.') }}</b>
                       </li>
                   </ul>
-                  @endif
                 </div>
+                @endif
               </div>
             </div>
           </div>

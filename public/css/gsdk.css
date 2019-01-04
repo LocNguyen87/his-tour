@@ -6900,6 +6900,12 @@ div#tab-slider {
 .rsDefaultInv .rsThumb:hover .rsTmb.note-tab {
 	background-image: url('../image/tour-tab-icon-03-active.png');
 }
+@media screen and (min-width:1401px) {
+  .header-banner.all-tours-banner,
+  .header-banner.home-banner {
+		
+}
+}
 @media screen and (min-width: 768px) {
   .navbar-right {
       float: right!important;

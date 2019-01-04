@@ -39,7 +39,7 @@
           <h5>Tour <b>{{ $tour->title }}</b></h5>
           <ul class="list-unstyled list-lines">
               <li>
-                  Ngày khởi hành: <b>{{ $tour->begin_date->format('d/m/Y') }}</b>
+                  Ngày khởi hành: <b>{{ $tour->begin_date->format('d/m/Y') }} @if($tour->date_note) ({{ $tour->date_note }}) @endif</b>
               </li>
               <li>
                   Điểm khởi hành: <b>{{ $tour->from->title }}</b>

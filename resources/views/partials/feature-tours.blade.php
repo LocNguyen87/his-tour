@@ -31,7 +31,7 @@
                           <b>Hành trình:</b> {!! $featured_tour->schedule !!}
                       </li>
                       <li>
-                          <b>Khởi hành:</b> {{ $featured_tour->begin_date->format('d/m/Y') }}
+                          <b>Khởi hành:</b> {{ $featured_tour->begin_date->format('d/m/Y') }} @if($featured_tour->date_note) ({{ $featured_tour->date_note }}) @endif
                       </li>
                       <li>
                           <b>Hãng bay:</b> {{ $featured_tour->flight }}

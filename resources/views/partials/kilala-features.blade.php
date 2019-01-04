@@ -7,7 +7,7 @@
                <img src="{{ asset('image/kilala-feature-icon-01.png') }}" alt="" />
            </div>
            <div class="description">
-               <h5>Giải vàng Japan Tourism Award của JINO</h5>
+               <h5>Giải vàng Japan Tourism Award của JNTO</h5>
            </div>
       </div>
     </div>

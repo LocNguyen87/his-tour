@@ -22,9 +22,7 @@ use Naxon\NovaFieldSortable\Sortable;
 use Vyuldashev\NovaMoneyField\Money;
 use Johnathan\NovaTrumbowyg\NovaTrumbowyg;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
-
 use Illuminate\Http\Request;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Tour extends Resource
 {
@@ -56,57 +54,60 @@ class Tour extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
     public function fields(Request $request)
     {
-
         return [
             new NovaTab('Registrations', [
               HasMany::make('Registrations'),
             ]),
             new NovaTab('Basic Information', [
-                    NovaHeader::make('Tour Basic Information'),
-                    ID::make()->sortable(),
-
-                    TextWithSlug::make('Tour Name', 'title')
-                        ->sortable()
-                        ->rules('required', 'string')
-                        ->slug('Title Alias'),
-                    Slug::make('Title Alias','title_alias')
-                      ->rules('required','string')
-                      ->hideFromIndex(),
-                    Text::make('Tour SKU', 'sku'),
-                    Text::make('Times', 'times')->hideFromIndex(),
-                    Text::make('Flight', 'flight')->hideFromIndex(),
-                    Number::make('Ticket Left', 'ticket_left')->hideFromIndex(),
-                    Money::make('Price','VND')->locale('vi-VN')->hideFromIndex(),
-                    BelongsTo::make('Tour Category', 'category', 'App\Nova\TourCategory')->hideFromIndex(),
-                    BelongsTo::make('Tour From', 'from', 'App\Nova\LocationFrom')->hideFromIndex(),
-                    Boolean::make('Visible', 'public'),
-                    Boolean::make('Featured', 'featured'),
-                    Date::make('Departure Date','begin_date')->format('DD-MM-Y'),
-                    Boolean::make('On Sale'),
-                    NovaTrumbowyg::make('Sale Text')->hideFromIndex(),
+                NovaHeader::make('Tour Basic Information'),
+                ID::make()->sortable(),
+                TextWithSlug::make('Tour Name', 'title')
+                    ->sortable()
+                    ->rules('required', 'string')
+                    ->slug('Title Alias'),
+                Slug::make('Title Alias', 'title_alias')
+                    ->rules('required', 'string')
+                    ->hideFromIndex(),
+                Text::make('Tour SKU', 'sku'),
+                Text::make('Times', 'times')->hideFromIndex(),
+                Text::make('Flight', 'flight')->hideFromIndex(),
+                Number::make('Ticket Left', 'ticket_left')->hideFromIndex(),
+                Money::make('Price', 'VND')->locale('vi-VN')->hideFromIndex(),
+                BelongsTo::make('Tour Category', 'category', 'App\Nova\TourCategory')->hideFromIndex(),
+                BelongsTo::make('Tour From', 'from', 'App\Nova\LocationFrom')->hideFromIndex(),
+                Date::make('Departure Date', 'begin_date')->format('DD-MM-Y'),
+                Text::make('Date Note', 'date_note'),
+                NovaTrumbowyg::make('Sale Text')->hideFromIndex(),
+              ]),
+              new NovaTab('Dipslay Information', [
+                NovaHeader::make('Tour Display Information'),
+                Boolean::make('Visible', 'public'),
+                Boolean::make('Featured', 'featured'),
+                Boolean::make('On Sale'),
               ]),
               new NovaTab('Image & Gallery', [
                     NovaHeader::make('Tour Featured Image & Gallery')->hideFromIndex(),
                     Images::make('Banner Image', 'banner') // second parameter is the media collection name
                         ->thumbnail('banner') // conversion used to display the image
                         ->rules('required')
-                        ->setFileName(function($originalFilename, $extension, $model){
-                        return 'image-' . md5($originalFilename) . '.' . $extension;
-                    })
+                        ->setFileName(function ($originalFilename, $extension, $model) {
+                            return 'image-'.md5($originalFilename).'.'.$extension;
+                        })
                     ->hideFromIndex(),
                     Images::make('Featured Image', 'feature') // second parameter is the media collection name
                         ->conversion('thumb')
                         ->conversionOnView('thumb')
                         ->thumbnail('thumb') // conversion used to display the image
                         ->rules('required')
-                        ->setFileName(function($originalFilename, $extension, $model){
-                        return 'image-' . md5($originalFilename) . '.' . $extension;
-                    }),
+                        ->setFileName(function ($originalFilename, $extension, $model) {
+                            return 'image-'.md5($originalFilename).'.'.$extension;
+                        }),
                     Images::make('Images Gallery', 'gallery') // second parameter is the media collection name
                     ->conversion('gallery') // conversion used to display the "original" image
                     ->conversionOnView('thumb') // conversion used on the model's view
@@ -116,8 +117,8 @@ class Tour extends Resource
                     // ->rules('required', 'size:1') // validation rules for the collection of images
                     // validation rules for the collection of images
                     // ->singleImageRules('dimensions:min_width=300')
-                    ->setFileName(function($originalFilename, $extension, $model){
-                        return 'image-' . md5($originalFilename) . '.' . $extension;
+                    ->setFileName(function ($originalFilename, $extension, $model) {
+                        return 'image-'.md5($originalFilename).'.'.$extension;
                     })
                     ->customPropertiesFields([
                         Text::make('Image Title'),
@@ -131,17 +132,17 @@ class Tour extends Resource
                       ->disk('public')
                       ->path('itinerary-files')
                       ->hideFromIndex(),
-                    Text::make('Schedule','schedule')->hideFromIndex(),
-                    NovaTrumbowyg::make('Itinerary','itinerary')->hideFromIndex(),
-                    NovaTrumbowyg::make('Details','detail')->hideFromIndex(),
-                    NovaTrumbowyg::make('Note','note')->hideFromIndex(),
+                    Text::make('Schedule', 'schedule')->hideFromIndex(),
+                    NovaTrumbowyg::make('Itinerary', 'itinerary')->hideFromIndex(),
+                    NovaTrumbowyg::make('Details', 'detail')->hideFromIndex(),
+                    NovaTrumbowyg::make('Note', 'note')->hideFromIndex(),
                 ]),
                 new NovaTab('Additional Parameters', [
                     NovaHeader::make('Additional Parameters'),
                     Json::make('OG meta for SEO', [
                           Textarea::make('Meta Title'),
                           Textarea::make('Meta Description'),
-                          Textarea::make('Meta Keywords')
+                          Textarea::make('Meta Keywords'),
                       ], 'params')->hideFromIndex(),
                 ]),
                 Sortable::make('Order', 'ordering')->onlyOnIndex(),
@@ -151,7 +152,8 @@ class Tour extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
     public function cards(Request $request)
@@ -162,7 +164,8 @@ class Tour extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
     public function filters(Request $request)
@@ -173,7 +176,8 @@ class Tour extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
     public function lenses(Request $request)
@@ -184,7 +188,8 @@ class Tour extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
     public function actions(Request $request)

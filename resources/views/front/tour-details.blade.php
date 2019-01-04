@@ -243,7 +243,7 @@
                             <b>Hành trình:</b> {!! $related_tour->schedule !!}
                         </li>
                         <li>
-                            <b>Khởi hành:</b> {{ $related_tour->begin_date->format('d/m/Y') }}
+                        <b>Khởi hành:</b> {{ $related_tour->begin_date->format('d/m/Y') }} @if($related_tour->date_note) ({{ $related_tour->date_note }}) @endif
                         </li>
                         <li>
                             <b>Hãng bay:</b> {{ $related_tour->flight }}
