@@ -91,6 +91,7 @@
   <!--  jQuery and Bootstrap core files    -->
   <script src="{{ asset('js/jquery.js') }}"></script>
   <script src="{{ asset('js/jquery-ui.custom.min.js') }}"></script>
+  <script src="{{ asset('js/jquery.matchHeight-min.js') }}"></script>
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('js/moment.js') }}"></script>
   <script src="{{ asset('js/tippy.js') }}"></script>
@@ -115,6 +116,10 @@
   <script src="{{ asset('js/get-shit-done.js') }}"></script>
   <!-- If you have retina @2x images on your server which can be sent to iPhone/iPad/MacRetina, please uncomment the next line, otherwise you can delete it -->
 	<!-- <script src="assets/js/retina.min.js"></script> -->
-	@yield('pageScripts')
-
+    @yield('pageScripts')
+    <script type="text/javascript">
+    $(function() {
+        $('.card-tour').matchHeight({});
+    });
+    </script>
 </html>
