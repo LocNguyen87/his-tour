@@ -275,8 +275,8 @@
         keyboardNavEnabled: true,
         usePreloader: false,
         thumbs: {
-            autoCenter: true,
-            fitInViewport: true,
+            autoCenter: false,
+            fitInViewport: false,
     		spacing: 0,
     		arrowsAutoHide: true
     	}
@@ -344,39 +344,6 @@
         });
       }
     });
-
-    // $('#doSubmit').on('click', function(e) {
-    //   e.preventDefault()
-    //   var registrationForm = document.getElementById("registration-init-form")
-  	// 	var fd = new FormData(registrationForm)
-
-    //   $.ajax({
-    //     url: window.location,
-    //     data: fd,
-    //     cache: false,
-    //     processData: false,
-    //     contentType: false,
-    //     type: 'POST',
-    //     beforeSend: function() {
-    //       console.log('before send');
-    //     },
-    //     success: function (xml, textStatus, xhr) {
-    //     	if(xhr.responseJSON.result === 'session_set') { // registration created successfully
-    //     		// display thank you text
-    //         console.log('success')
-    //         // console.log(xhr.responseJSON.redirect)
-    //         window.location = xhr.responseJSON.redirect
-    //     	}
-    //     	else {
-    //     		alert('Có lỗi khi đăng ký')
-    //     	}
-    //     },
-	// 			error: function(error) {
-	// 					alert('Có lỗi khi đăng ký')
-    //     }
-    //   });
-
-    // })
   })
 </script>
 @endsection
