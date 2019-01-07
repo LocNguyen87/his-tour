@@ -19,9 +19,9 @@
                         <input type="hidden" name="tour_slug" readonly/>
                         <div class="form-group">
                           <select id="tour_select" class="selectpicker" data-style="form-control">
-                              <option disabled selected> Chọn tour khởi hành</option>
+                              <option class="tour_default_text" disabled selected> Chọn tour khởi hành</option>
                               @foreach($tours as $tour)
-                              <option value="{{ $tour->id }}">
+                              <option class="tour_option" value="{{ $tour->id }}">
                                 {{ $tour->title }} ({{ number_format($tour->price, 0, ',', '.') }} VNĐ)
                               </option>
                               @endforeach
@@ -31,12 +31,12 @@
                           <div class="row">
                             <div class="col-md-6">
                               <select id="begin_date" class="selectpicker" data-style="form-control">
-                                  <option selected> Chọn ngày khởi hành</option>
+                                  <option disabled selected> Chọn ngày khởi hành</option>
                               </select>
                             </div>
                             <div class="col-md-6">
                                 <select id="location_from" class="selectpicker" data-style="form-control">
-                                    <option selected> Chọn điểm khởi hành</option>
+                                    <option disabled selected> Chọn điểm khởi hành</option>
                                 </select>
                             </div>
                           </div>
@@ -160,7 +160,7 @@
           });
         },
         error: function() {
-          alert('Đã xảy ra lỗi khi tìm thông tin tour!!! Hãy thử lại sau.');
+          alert('Đã xảy ra lỗi khi hiển thị dữ liệu. Hãy thử lại sau.');
         }
     })
 
@@ -178,9 +178,49 @@
           });
         },
         error: function() {
-          alert('Đã xảy ra lỗi khi tìm thông tin tour!!! Hãy thử lại sau.');
+          alert('Đã xảy ra lỗi khi hiển thị dữ liệu. Hãy thử lại sau.');
         }
     })
+
+    $('#begin_date').on('change', performAdvanceSearch)
+    $('#location_from').on('change', performAdvanceSearch)
+
+    function performAdvanceSearch() {
+      var date_str = $('#begin_date').val()
+      var from_id = $('#location_from').val()
+      console.log(date_str)
+      console.log(from_id)
+      console.log('dad')
+      if(date_str || from_id) {
+        $.ajax({
+        url: '{{ url('/api/searchTourAdvance') }}',
+  					type: 'POST',
+  					data: {
+              date: date_str,
+              from_id: from_id
+  					},
+  					beforeSend: function() {
+  					},
+  					success: function(xml, textStatus, xhr) {
+              var tours = xhr.responseJSON.tours
+              if(tours.length > 0) { // found tours
+                $('#tour_select option.tour_default_text').html('Có '+ tours.length +' tour phù hợp với ngày và điểm khởi hành đã chọn')
+                $('#tour_select option.tour_option').remove()
+                tours.forEach(tour => {
+                  $('#tour_select').append('<option class="tour_option" value="'+ tour.id +'">' + tour.title  + ' (' + tour.price + ' VNĐ)</option>')
+                })
+              }
+              else {
+                $('#tour_select option.tour_default_text').html('Không có tour nào phù hợp với ngày và điểm khởi hành đã chọn')
+              }
+              $('#tour_select').selectpicker('refresh')
+  					},
+  					error: function() {
+  						alert('Đã xảy ra lỗi khi tìm thông tin tour!!! Hãy thử lại sau.');
+  					}
+        })
+      }
+    }
 
     $('#tour_select').on('change', function() {
       var tour_id = $(this).val();

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Mail;
+use Carbon\Carbon;
+use Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use App\Tour;
 use App\Registration;
@@ -60,12 +63,13 @@ class FrontController extends Controller
     public function getAvailableDates(Request $request)
     {
         $tours = Tour::all();
-        $dates = $tours->pluck('begin_date');
+        $dates = $tours->pluck('begin_date')->unique();
         $formatDates = [];
         foreach ($dates as $date) {
             $fd = $date->format('d/m/Y');
             $formatDates[] = $fd;
         }
+        sort($formatDates);
 
         return response()->json([
             'dates' => $formatDates,
@@ -78,6 +82,37 @@ class FrontController extends Controller
 
         return response()->json([
             'locations' => $locations,
+        ]);
+    }
+
+    public function searchTourAdvance(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'from_id' => 'required_without_all:date',
+            'date' => 'required_without_all:from_id',
+        ]);
+
+        $input_from_id = $request->from_id;
+        $input_date = $request->date;
+
+        if ($input_from_id || $input_date) {
+            $tours = DB::table('tours');
+            if ($input_date) {
+                $date_to_find = Carbon::createFromFormat('d/m/Y', $input_date);
+                $tours = $tours->whereDate('begin_date', $date_to_find);
+            }
+            if ($input_from_id) {
+                $tours = $tours->where('from_id', $input_from_id);
+            }
+
+            $tours = $tours->get();
+            foreach ($tours as $tour) {
+                $tour->price = number_format($tour->price, 0, ',', '.');
+            }
+        }
+
+        return response()->json([
+            'tours' => $tours,
         ]);
     }
 

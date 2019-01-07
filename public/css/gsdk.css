@@ -6685,7 +6685,8 @@ h3.contact-title::after {
 }
 .japan-explore img,
 .japan-cuisine img {
-    max-width: 100%;
+    /* max-width: 100%; */
+    width:100%;
     height: auto;
 }
 .explore-nature {
@@ -6792,8 +6793,9 @@ form#registration-init-form .form-control {
 		position: relative;
 }
 .header-banner.all-tours-banner,
-.header-banner.home-banner {
-		height: 450px;
+.header-banner.home-banner,
+.header-banner.details-banner {
+		/* height: 450px; */
 }
 .header-banner.short-banner {
 	height:285px;
@@ -6902,8 +6904,9 @@ div#tab-slider {
 }
 @media screen and (min-width:1401px) {
   .header-banner.all-tours-banner,
-  .header-banner.home-banner {
-		
+  .header-banner.home-banner,
+  .header-banner.details-banner {
+		height:450px;
 }
 }
 @media screen and (min-width: 768px) {

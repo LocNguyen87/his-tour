@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', $tour->title)
 @section('topBanner')
-<div class="header-banner" style="background-image: url('{{ asset('image/parallax-text.jpg') }}')">
+<div class="header-banner details-banner" style="background-image: url('{{ asset('image/parallax-text.jpg') }}')">
     <div class="header-image">
         <div class="top-form-wrapper">
           <div class="container">
