@@ -4,17 +4,12 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Panel;
 use Illuminate\Http\Request;
-use Laravel\Nova\Http\Requests\NovaRequest;
-use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 use App\Nova\Actions\ExportRegistrations;
 use App\Nova\Actions\ExportRegistrationsBreakField;
 
@@ -40,27 +35,29 @@ class Registration extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'registration_code'
+        'id', 'registration_code',
     ];
 
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
     public function fields(Request $request)
     {
         BelongsTo::make('Tour');
+
         return [
             ID::make()->sortable(),
+            Date::make('Created At')->format('DD-MM-Y'),
             Text::make('Registration Code')->canSeeWhen('viewRegistrationData', $this),
             Text::make('Referer')->hideFromIndex()->canSeeWhen('viewRegistrationData', $this),
             BelongsTo::make('Tour', 'tour', 'App\Nova\Tour')->canSeeWhen('viewRegistrationData', $this),
             Text::make('Payment Method')->canSeeWhen('viewRegistrationData', $this),
             new Panel('Personal Information', $this->personalFields()),
             new Panel('Price Information', $this->priceFields()),
-
         ];
     }
 
@@ -79,23 +76,23 @@ class Registration extends Resource
         return [
             Number::make('Adults Number')->hideFromIndex()->canSeeWhen('viewRegistrationData', $this),
             Text::make('Adults Price')->resolveUsing(function ($price) {
-                return number_format($price, 0, ',', '.') . ' VNĐ';
+                return number_format($price, 0, ',', '.').' VNĐ';
             })->hideFromIndex()->canSeeWhen('viewRegistrationData', $this),
             Text::make('Infants Number')->hideFromIndex()->canSeeWhen('viewRegistrationData', $this),
             Text::make('Infants Price')->resolveUsing(function ($price) {
-                return number_format($price, 0, ',', '.') . ' VNĐ';
+                return number_format($price, 0, ',', '.').' VNĐ';
             })->hideFromIndex()->canSeeWhen('viewRegistrationData', $this),
             Text::make('Childs Single Number')->hideFromIndex()->canSeeWhen('viewRegistrationData', $this),
             Text::make('Childs Single Price')->resolveUsing(function ($price) {
-                return number_format($price, 0, ',', '.') . ' VNĐ';
+                return number_format($price, 0, ',', '.').' VNĐ';
             })->hideFromIndex()->canSeeWhen('viewRegistrationData', $this),
             Text::make('Childs Shared Number')->hideFromIndex()->canSeeWhen('viewRegistrationData', $this),
             Text::make('Childs Shared Price')->resolveUsing(function ($price) {
-                return number_format($price, 0, ',', '.') . ' VNĐ';
+                return number_format($price, 0, ',', '.').' VNĐ';
             })->hideFromIndex()->canSeeWhen('viewRegistrationData', $this),
 
             Text::make('Total Price')->resolveUsing(function ($price) {
-                return number_format($price, 0, ',', '.') . ' VNĐ';
+                return number_format($price, 0, ',', '.').' VNĐ';
             })->canSeeWhen('viewRegistrationData', $this),
         ];
     }
@@ -103,7 +100,8 @@ class Registration extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
     public function cards(Request $request)
@@ -114,7 +112,8 @@ class Registration extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
     public function filters(Request $request)
@@ -125,7 +124,8 @@ class Registration extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
     public function lenses(Request $request)
@@ -136,25 +136,27 @@ class Registration extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
     public function actions(Request $request)
     {
         return [
-            (new ExportRegistrations)->canSee(function ($request) {
+            (new ExportRegistrations())->canSee(function ($request) {
                 return $request->user()->can(
                     'viewPersonalData',
                     User::class
                 );
             }),
-            (new ExportRegistrationsBreakField)->canSee(function ($request) {
+            (new ExportRegistrationsBreakField())->canSee(function ($request) {
                 if (!$request->user()->can(
                     'viewPersonalData',
                     User::class
                 )) {
                     return true;
                 }
+
                 return false;
             }),
         ];
