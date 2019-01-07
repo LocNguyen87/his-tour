@@ -203,9 +203,9 @@
   					},
   					success: function(xml, textStatus, xhr) {
               var tours = xhr.responseJSON.tours
+              $('#tour_select option.tour_option').remove()
               if(tours.length > 0) { // found tours
                 $('#tour_select option.tour_default_text').html('Có '+ tours.length +' tour phù hợp với ngày và điểm khởi hành đã chọn')
-                $('#tour_select option.tour_option').remove()
                 tours.forEach(tour => {
                   $('#tour_select').append('<option class="tour_option" value="'+ tour.id +'">' + tour.title  + ' (' + tour.price + ' VNĐ)</option>')
                 })
