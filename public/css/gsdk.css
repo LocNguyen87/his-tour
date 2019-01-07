@@ -6662,8 +6662,8 @@ h3.contact-title::after {
 .tours-grid {
 	margin-top:70pt;
 }
-.card-user.card-tour .content {
-	background:#d4efff;
+.card-user.card-tour {
+    background:#d3efff
 }
 .card-user.card-tour.normal-tour .content {
     min-height: 190px;
