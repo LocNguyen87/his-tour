@@ -13,12 +13,9 @@ class RegistrationPolicy
 
     /**
      * Create a new policy instance.
-     *
-     * @return void
      */
     public function __construct()
     {
-        //
     }
 
     public function viewAny($user)
@@ -33,7 +30,8 @@ class RegistrationPolicy
 
     public function create($user)
     {
-        return $user->can('manageRegistration');
+        // return $user->can('manageRegistration');
+        return false;
     }
 
     public function update($user, Registration $registration)
