@@ -6876,9 +6876,9 @@ div#tab-slider {
 .rsTmb.detail-tab,
 .rsTmb.note-tab {
   background-repeat: no-repeat;
-  margin: 0 30px;
-  padding: 0pt 0 20pt 50pt;
-  background-position: left center;
+  /* margin: 0 30px; */
+  padding: 0pt 0 20pt 80pt;
+  background-position: 30pt center;
   background-size: auto 100%
 }
 .rsTmb.itinerary-tab {
@@ -6890,16 +6890,13 @@ div#tab-slider {
 .rsTmb.note-tab {
 	background-image: url('../image/tour-tab-icon-03.png');
 }
-.rsDefaultInv .rsThumb.rsNavSelected .rsTmb.itinerary-tab,
-.rsDefaultInv .rsThumb:hover .rsTmb.itinerary-tab {
+.rsDefaultInv .rsThumb.rsNavSelected .rsTmb.itinerary-tab {
 	background-image: url('../image/tour-tab-icon-01-active.png');
 }
-.rsDefaultInv .rsThumb.rsNavSelected .rsTmb.detail-tab,
-.rsDefaultInv .rsThumb:hover .rsTmb.detail-tab {
+.rsDefaultInv .rsThumb.rsNavSelected .rsTmb.detail-tab {
 	background-image: url('../image/tour-tab-icon-02-active.png');
 }
-.rsDefaultInv .rsThumb.rsNavSelected .rsTmb.note-tab,
-.rsDefaultInv .rsThumb:hover .rsTmb.note-tab {
+.rsDefaultInv .rsThumb.rsNavSelected .rsTmb.note-tab {
 	background-image: url('../image/tour-tab-icon-03-active.png');
 }
 @media screen and (min-width:1401px) {
@@ -6969,15 +6966,15 @@ div#tab-slider {
 }
 @media screen and (max-width: 800px) and (min-width: 0px) {
     .rsDefaultInv .rsThumbsHor {
-        height:100px;
+        height:auto;
     }
     .rsDefaultInv .rsThumb {
-        width:350px;
-        height:100px;
+        width:auto;
+        height:auto;
     }
     .rsTmb.itinerary-tab, .rsTmb.detail-tab, .rsTmb.note-tab {
-        padding: 0pt 0 20pt 110pt;
-        background-position: 50pt center;
+        padding: 0pt 0 20pt 80pt;
+        background-position: 30pt center;
     }
 }
 @media screen and (max-width: 767px) {

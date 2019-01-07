@@ -270,17 +270,29 @@
         fadeinLoadedSlide: true,
         controlNavigation: 'thumbnails',
         loop: false,
-        loopRewind: true,
+        loopRewind: false,
         numImagesToPreload: 6,
         keyboardNavEnabled: true,
         usePreloader: false,
+        navigateByClick:false,
+        sliderDrag:false,
+        sliderTouch:false,
         thumbs: {
-            autoCenter: false,
-            fitInViewport: false,
+            drag:true,
+            touch:true,
+            firstMargin:true,
+            autoCenter: true,
+            fitInViewport: true,
     		spacing: 0,
     		arrowsAutoHide: true
     	}
     });
+    // var sliderInstance  = $("#tab-slider").data('royalSlider');
+    // sliderInstance.ev.on('rsBeforeMove', function(event, type, userAction) {
+    //     if(type == 1) {
+    //         console.log(event)
+    //     }
+    // });
     var slider = $('#tab-slider');
     slider.prepend(slider.find('.rsNav'));
 
