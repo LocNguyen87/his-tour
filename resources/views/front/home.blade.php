@@ -204,6 +204,7 @@
   					success: function(xml, textStatus, xhr) {
               var tours = xhr.responseJSON.tours
               $('#tour_select option.tour_option').remove()
+              $('#tour_select option.tour_default_text').prop('selected','selected')
               if(tours.length > 0) { // found tours
                 $('#tour_select option.tour_default_text').html('Có '+ tours.length +' tour phù hợp với ngày và điểm khởi hành đã chọn')
                 tours.forEach(tour => {
