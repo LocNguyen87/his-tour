@@ -313,37 +313,35 @@
   	 },
 
       submitHandler: function(form, event) {
-  		    event.preventDefault();
-  		    var myform = document.getElementById("registration-init-form");
-  		    var fd = new FormData(myform );
-          var tour_slug = $('input[name="tour_slug"]').val()
-          var destination = '{{ url('/chi-tiet-tour/') }}' + '/' + tour_slug
+        event.preventDefault();
+        var myform = document.getElementById("registration-init-form");
+        var fd = new FormData(myform );
 
-            $.ajax({
-              url: destination,
-              data: fd,
-              cache: false,
-              processData: false,
-              contentType: false,
-              type: 'POST',
-              beforeSend: function() {
-                console.log('before send');
-              },
-              success: function (xml, textStatus, xhr) {
-              	if(xhr.responseJSON.result === 'session_set') { // registration created successfully
-              		// display thank you text
-                  console.log('success')
-                  // console.log(xhr.responseJSON.redirect)
-                  window.location = xhr.responseJSON.redirect
-              	}
-              	else {
-              		alert('Có lỗi khi đăng ký')
-              	}
-              },
-      				error: function(error) {
-      						alert('Có lỗi khi đăng ký')
-              }
-            });
+        $.ajax({
+            url: window.location,
+            data: fd,
+            cache: false,
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            beforeSend: function() {
+            console.log('before send');
+            },
+            success: function (xml, textStatus, xhr) {
+            if(xhr.responseJSON.result === 'session_set') { // registration created successfully
+                // display thank you text
+                console.log('success')
+                // console.log(xhr.responseJSON.redirect)
+                window.location = xhr.responseJSON.redirect
+            }
+            else {
+                alert('Có lỗi khi đăng ký')
+            }
+            },
+                error: function(error) {
+                        alert('Có lỗi khi đăng ký')
+            }
+        });
       }
     });
 
