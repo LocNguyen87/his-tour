@@ -28,7 +28,7 @@
         <div class="col-md-5">
           <h3 class="explore-title">Phong cảnh <br /><b>Nhật Bản</b></h3>
           <div class="explore-text">
-            <p>Không chỉ được biết đến với biệt danh là đất nước mặt trời mọc mà Nhật Bản còn được coi là một thiên đường du lịch đáng đến nhất bởi tới nơi đây du khách sẽ được chiêm ngưỡng những đồi hoa lộng lẫy, rừng tre xanh mướt, những lâu đài cổ kính và đền đài trang nghiêm làm cho bạn có cảm giác như lạc vào chốn thần tiên đầy mơ mộng.</p>
+            <p>Được mệnh danh là đất nước mặt trời mọc, Nhật Bản thực sự là một trong những điểm du lịch cực kì nổi tiếng trên toàn thế giới với những cảnh quan tuyệt mĩ và nền văn hóa hấp dẫn. Sở hữu cảnh sắc thiên nhiên biến đổi kì ảo theo mùa cùng những công trình kiến trúc kết hợp nhuần nhuyễn giữa truyền thống và hiện đại, nước Nhật sẽ đưa bạn đi từ ngạc nhiên này đến ngạc nhiên khác khi có dịp đến thăm, khám phá vùng đất xinh đẹp này.</p>
           </div>
         </div>
       </div>

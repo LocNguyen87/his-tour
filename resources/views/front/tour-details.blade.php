@@ -111,7 +111,7 @@
 @section('mainContent')
 <div class="tour-meta">
   <div class="row">
-    <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="col-md-4 col-sm-4 col-xs-12">
       <div class="info info-horizontal">
            <div class="icon icon-transparent icon-sm">
                <img src="{{ asset('image/tour-details-icon-01.png') }}" alt="" />
@@ -121,7 +121,7 @@
            </div>
       </div>
     </div>
-    <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="col-md-4 col-sm-4 col-xs-12">
       <div class="info info-horizontal">
            <div class="icon icon-transparent icon-sm">
                <img src="{{ asset('image/tour-details-icon-02.png') }}" alt="" />
@@ -131,17 +131,7 @@
            </div>
       </div>
     </div>
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <div class="info info-horizontal">
-           <div class="icon icon-transparent icon-sm">
-               <img src="{{ asset('image/tour-details-icon-03.png') }}" alt="" />
-           </div>
-           <div class="description">
-               <h5>Còn {{ $tour->ticket_left }} ghế trống</h5>
-           </div>
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="col-md-4 col-sm-4 col-xs-12">
       <div class="info info-horizontal">
            <div class="icon icon-transparent icon-sm">
                <img src="{{ asset('image/tour-details-icon-04.png') }}" alt="" />
