@@ -3,10 +3,8 @@
 namespace App\Providers;
 
 use Laravel\Nova\Nova;
-use Laravel\Nova\Cards\Help;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
-use App\Nova\User;
 use Remipou\NovaPageManager\PageResource;
 use Silvanite\NovaToolPermissions\NovaToolPermissions;
 
@@ -14,8 +12,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 {
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
     public function boot()
     {
@@ -24,8 +20,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
     /**
      * Register the Nova routes.
-     *
-     * @return void
      */
     protected function routes()
     {
@@ -39,14 +33,14 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      * Register the Nova gate.
      *
      * This gate determines who can access Nova in non-local environments.
-     *
-     * @return void
      */
     protected function gate()
     {
         Gate::define('viewNova', function ($user) {
             return in_array($user->email, [
-                'loc@breakfield.com.vn'
+                'loc@breakfield.com.vn',
+                'vunhu@breakfield.com.vn',
+                'admin@songhantourist.com',
             ]);
         });
     }
@@ -59,7 +53,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            (new \ChrisWare\NovaClockCard\NovaClockCard)
+            (new \ChrisWare\NovaClockCard\NovaClockCard())
             ->locale('vi')
             ->dateFormat('dddd, Do MMMM YYYY')
             ->timeFormat('LTS')
@@ -82,19 +76,16 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
     /**
      * Register any application services.
-     *
-     * @return void
      */
     public function register()
     {
-        //
     }
 
     protected function resources()
     {
         Nova::resourcesIn(app_path('Nova'));
         Nova::resources([
-            PageResource::class
+            PageResource::class,
         ]);
     }
 }
