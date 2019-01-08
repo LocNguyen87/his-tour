@@ -27,11 +27,11 @@ class FrontController extends Controller
             ->get();
 
         $tours_hcm = Tour::where('from_id', 1)
-            ->orderBy('ordering', 'asc')
+            ->orderBy('begin_date', 'asc')
             ->get();
 
         $tours_hn = Tour::where('from_id', 2)
-            ->orderBy('ordering', 'asc')
+            ->orderBy('begin_date', 'asc')
             ->get();
 
         return view('front.home', [
