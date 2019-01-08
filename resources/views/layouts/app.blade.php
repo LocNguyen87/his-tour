@@ -120,6 +120,8 @@
     <script type="text/javascript">
     $(function() {
         $('.card-tour').matchHeight({});
+        $('.tour-card-title h4.title').matchHeight({});
+        $('.card-user.card-tour.normal-tour h4.title').matchHeight({});
     });
     </script>
 </html>
