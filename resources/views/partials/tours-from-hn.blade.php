@@ -15,6 +15,11 @@
               <span class="pull-right">{{ number_format($featured_tour->price, 0, ',', '.') . ' VNĐ' }}</span>
             </div>
             <div class="content">
+                @if($featured_tour->on_sale === 1)
+                <div class="sale-info">
+                    <img class="tippy" title="{!! $featured_tour->sale_text !!}" src="{{ asset('image/sale-badge.png') }}" data-theme="light" data-arrow="true" />
+                </div>
+                @endif
                 <div class="description">
                   <a href="{!! route('tourDetails', ['tour' => $featured_tour]) !!}">
                     <h4 class="title">{{ $featured_tour->title }}</h4>
