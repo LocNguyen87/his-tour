@@ -329,7 +329,7 @@ class FrontController extends Controller
                 $e->cc('nguyen.thituyettran@his-world.com', 'Nguyen Thi Tuyet Tran');
                 $e->cc('huynh.maikhanhxuan@songhantourist.com', 'Huynh Mai Khanh Xuan');
                 $e->subject('New JAPAN TOUR Booking Request !');
-            });git 
+            });
 
             // send notification email to admin
             Mail::send('emails.user', ['registration' => $registration], function ($e) use ($registration) {
