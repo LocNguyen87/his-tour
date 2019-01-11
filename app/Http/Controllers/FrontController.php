@@ -325,9 +325,11 @@ class FrontController extends Controller
             Mail::send('emails.admin', ['registration' => $registration], function ($e) use ($registration) {
                 $e->from('alert@songhantourist.com', 'KILALA JAPAN TOUR');
                 $e->to('loc@breakfield.com.vn', 'KILALA JAPAN TOUR Manager');
-                $e->cc('kawasaki.keisuke@his-world.com', 'nguyen.thituyettran@his-world.com', 'huynh.maikhanhxuan@songhantourist.com');
+                $e->cc('kawasaki.keisuke@his-world.com', 'Kawasaki Keisuke');
+                $e->cc('nguyen.thituyettran@his-world.com', 'Nguyen Thi Tuyet Tran');
+                $e->cc('huynh.maikhanhxuan@songhantourist.com', 'Huynh Mai Khanh Xuan');
                 $e->subject('New JAPAN TOUR Booking Request !');
-            });
+            });git 
 
             // send notification email to admin
             Mail::send('emails.user', ['registration' => $registration], function ($e) use ($registration) {
