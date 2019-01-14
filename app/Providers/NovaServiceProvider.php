@@ -40,7 +40,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             return in_array($user->email, [
                 'loc@breakfield.com.vn',
                 'vunhu@breakfield.com.vn',
-                'admin@songhantourist.com',
+                'kawasaki.keisuke@his-world.com',
+                'nguyen.thituyettran@his-world.com',
             ]);
         });
     }
